@@ -29,6 +29,31 @@
   
   
   <entry>
+    <title>2023强网杯-speedup</title>
+    <link href="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-speedup/"/>
+    <url>/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-speedup/</url>
+    
+    <content type="html"><![CDATA[<h1 id="speedup"><a href="#speedup" class="headerlink" title="speedup"></a>speedup</h1><p>先看题目，要求一个大整数的每位相加</p><p>写个脚本尝试暴力跑一下，跑不动</p><p>去oeis找一下是否有相关的库，找到一个已经解到2^30的库</p><p>sha256后提交即可</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>-CTF</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>-CTF-Crypto</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第一天</title>
     <link href="/2023/12/22/%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
     <url>/2023/12/22/%E7%AC%AC%E4%B8%80%E5%A4%A9/</url>

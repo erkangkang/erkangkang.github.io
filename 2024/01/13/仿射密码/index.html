@@ -1,0 +1,802 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/red.jpg">
+  <link rel="icon" href="/img/red.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="尔康康康康">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="仿射密码一.密码体制分析仿射密码本质上是一种替换密码，使用加密函数对每个字母逐个加密。 加密函数 E(x) &#x3D; (ax + b)(mod m) 其中m为加密表中字母数量，一般取26。 b一般为常数。 a与m需要互质，即gcd(a,m)&#x3D;&#x3D;1 解密函数 D(x) &#x3D; a^-1(x - b)(mod m) 其中a^-1是a在乘法群中的逆元，可以用扩展欧几里得算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学-仿射密码">
+<meta property="og:url" content="https://erkangkang.github.io/2024/01/13/%E4%BB%BF%E5%B0%84%E5%AF%86%E7%A0%81/index.html">
+<meta property="og:site_name" content="尔康康康康">
+<meta property="og:description" content="仿射密码一.密码体制分析仿射密码本质上是一种替换密码，使用加密函数对每个字母逐个加密。 加密函数 E(x) &#x3D; (ax + b)(mod m) 其中m为加密表中字母数量，一般取26。 b一般为常数。 a与m需要互质，即gcd(a,m)&#x3D;&#x3D;1 解密函数 D(x) &#x3D; a^-1(x - b)(mod m) 其中a^-1是a在乘法群中的逆元，可以用扩展欧几里得算法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/13/%E4%BB%BF%E5%B0%84%E5%AF%86%E7%A0%81/image-20240113102733731.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/13/%E4%BB%BF%E5%B0%84%E5%AF%86%E7%A0%81/image-20240113103300183.png">
+<meta property="article:published_time" content="2024-01-13T02:40:10.000Z">
+<meta property="article:modified_time" content="2024-01-13T02:43:24.291Z">
+<meta property="article:author" content="尔康康康康">
+<meta property="article:tag" content="古典密码">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://erkangkang.github.io/2024/01/13/%E4%BB%BF%E5%B0%84%E5%AF%86%E7%A0%81/image-20240113102733731.png">
+  
+  
+  
+  <title>密码学-仿射密码 - 尔康康康康</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erkangkang.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":null,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"pgXLabB07JIbb2xkpF8QuTDd-gzGzoHsz","app_key":"NdAK7NEnw4oYGFA92BPO0cMN","pv_format":"总访问量 {} 次","uv_format":"总访客数 {} 人","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>尔康康康康</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="密码学-仿射密码"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 10:40" pubdate>
+          2024年1月13日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          785 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">密码学-仿射密码</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="仿射密码"><a href="#仿射密码" class="headerlink" title="仿射密码"></a>仿射密码</h1><h3 id="一-密码体制分析"><a href="#一-密码体制分析" class="headerlink" title="一.密码体制分析"></a>一.密码体制分析</h3><p>仿射密码本质上是一种替换密码，使用加密函数对每个字母逐个加密。</p>
+<p><strong>加密函数</strong> E(x) &#x3D; (ax + b)(mod m)</p>
+<p>其中m为加密表中字母数量，一般取26。</p>
+<p>b一般为常数。</p>
+<p>a与m需要互质，即gcd(a,m)&#x3D;&#x3D;1</p>
+<p><strong>解密函数</strong> D(x) &#x3D; a^-1(x - b)(mod m)</p>
+<p>其中a^-1是a在乘法群中的逆元，可以用扩展欧几里得算法求得。</p>
+<h3 id="二-加密与解密实例分析"><a href="#二-加密与解密实例分析" class="headerlink" title="二.加密与解密实例分析"></a>二.加密与解密实例分析</h3><p>我们可以设置加密函数为E(x) &#x3D; (3x + 1)(mod 26)，加密表为26个英文字母。</p>
+<p>设置明文为 QFNUHELLO,根据加密原理可以得到下面的表格</p>
+<table>
+<thead>
+<tr>
+<th align="center">明文</th>
+<th align="center">Q</th>
+<th align="center">F</th>
+<th align="center">N</th>
+<th align="center">U</th>
+<th align="center">H</th>
+<th align="center">E</th>
+<th align="center">L</th>
+<th align="center">L</th>
+<th align="center">O</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">x</td>
+<td align="center">16</td>
+<td align="center">5</td>
+<td align="center">13</td>
+<td align="center">20</td>
+<td align="center">7</td>
+<td align="center">4</td>
+<td align="center">11</td>
+<td align="center">11</td>
+<td align="center">14</td>
+</tr>
+<tr>
+<td align="center">3x+1</td>
+<td align="center">49</td>
+<td align="center">16</td>
+<td align="center">40</td>
+<td align="center">61</td>
+<td align="center">22</td>
+<td align="center">13</td>
+<td align="center">34</td>
+<td align="center">34</td>
+<td align="center">43</td>
+</tr>
+<tr>
+<td align="center">3x+1(mod 26)</td>
+<td align="center">23</td>
+<td align="center">16</td>
+<td align="center">14</td>
+<td align="center">9</td>
+<td align="center">22</td>
+<td align="center">13</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">17</td>
+</tr>
+<tr>
+<td align="center">密文</td>
+<td align="center">X</td>
+<td align="center">Q</td>
+<td align="center">O</td>
+<td align="center">J</td>
+<td align="center">W</td>
+<td align="center">N</td>
+<td align="center">I</td>
+<td align="center">I</td>
+<td align="center">R</td>
+</tr>
+</tbody></table>
+<p>这样我们得到加密后的密文为XQOJWNIIR</p>
+<p>利用拓展欧几里得算法可以求得3在模26下的乘法逆元为9。</p>
+<p>逐个字母代入解密函数进行解密即可得到解密后明文为QFNUHELLO</p>
+<h3 id="三-代码实现与分析"><a href="#三-代码实现与分析" class="headerlink" title="三.代码实现与分析"></a>三.代码实现与分析</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">gcd</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-keyword">while</span> b:<br>        a, b = b, a % b<br>    <span class="hljs-keyword">return</span> a<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">mod_inverse</span>(<span class="hljs-params">a, m</span>):<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, m):<br>        <span class="hljs-keyword">if</span> (a * i) % m == <span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">return</span> i<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">affine_encrypt</span>(<span class="hljs-params">text, key</span>):<br>    result = <span class="hljs-string">&quot;&quot;</span><br>    a, b = key<br>    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> text:<br>        <span class="hljs-keyword">if</span> char.isalpha():<br>            <span class="hljs-keyword">if</span> char.isupper():<br>                result += <span class="hljs-built_in">chr</span>((a * (<span class="hljs-built_in">ord</span>(char) - <span class="hljs-number">65</span>) + b) % <span class="hljs-number">26</span> + <span class="hljs-number">65</span>)<br>            <span class="hljs-keyword">else</span>:<br>                result += <span class="hljs-built_in">chr</span>((a * (<span class="hljs-built_in">ord</span>(char) - <span class="hljs-number">97</span>) + b) % <span class="hljs-number">26</span> + <span class="hljs-number">97</span>)<br>        <span class="hljs-keyword">else</span>:<br>            result += char<br>    <span class="hljs-keyword">return</span> result<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">affine_decrypt</span>(<span class="hljs-params">ciphertext, key</span>):<br>    result = <span class="hljs-string">&quot;&quot;</span><br>    a, b = key<br>    a_inv = mod_inverse(a, <span class="hljs-number">26</span>)<br>    <span class="hljs-keyword">if</span> a_inv <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;密钥错误！！！&quot;</span>)<br>    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> ciphertext:<br>        <span class="hljs-keyword">if</span> char.isalpha():<br>            <span class="hljs-keyword">if</span> char.isupper():<br>                result += <span class="hljs-built_in">chr</span>((a_inv * (<span class="hljs-built_in">ord</span>(char) - <span class="hljs-number">65</span> - b)) % <span class="hljs-number">26</span> + <span class="hljs-number">65</span>)<br>            <span class="hljs-keyword">else</span>:<br>                result += <span class="hljs-built_in">chr</span>((a_inv * (<span class="hljs-built_in">ord</span>(char) - <span class="hljs-number">97</span> - b)) % <span class="hljs-number">26</span> + <span class="hljs-number">97</span>)<br>        <span class="hljs-keyword">else</span>:<br>            result += char<br>    <span class="hljs-keyword">return</span> result<br><br><span class="hljs-comment"># 例子</span><br>text = <span class="hljs-string">&quot;QFNUHELLO&quot;</span><br>key = (<span class="hljs-number">3</span>, <span class="hljs-number">1</span>)  <span class="hljs-comment"># 选择合适的a和b值</span><br>encrypted_text = affine_encrypt(text, key)<br>decrypted_text = affine_decrypt(encrypted_text, key)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;原文:&quot;</span>, text)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;加密后:&quot;</span>, encrypted_text)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;解密后:&quot;</span>, decrypted_text)<br><br></code></pre></td></tr></table></figure>
+
+<p>还是对上面明文“QFNUHELLO”进行加解密，可以得到如下结果</p>
+<img src="/2024/01/13/%E4%BB%BF%E5%B0%84%E5%AF%86%E7%A0%81/image-20240113102733731.png" srcset="/img/loading.gif" lazyload class="" title="image-20240113102733731">
+
+<h3 id="四-仿射密码破解"><a href="#四-仿射密码破解" class="headerlink" title="四.仿射密码破解"></a>四.仿射密码破解</h3><p>破解可以采用下面的几种方式</p>
+<ol>
+<li><strong>尝试所有可能的密钥组合：</strong> 由于仿射密码的密钥是由两个整数（a和b）组成，可以通过尝试所有可能的组合来进行破解。</li>
+<li><strong>使用统计信息：</strong> 如果无法尝试所有可能的组合，可以利用语言的统计信息。例如，在英语中，字母频率是有规律的，其中 ‘e’ 是最常用的字母。通过分析密文中的字母频率，可以尝试匹配常见的字母频率分布，从而推测可能的密钥。</li>
+<li><strong>检查结果的合理性：</strong> 解密后的文本应该具有合理的语法和意义。如果得到的结果看起来毫无意义，可能需要调整密钥。</li>
+</ol>
+<p>这里用暴力破解法进行仿射密码的破解，依旧采用QFNUHELLO加密后的密文为例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gcd</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-keyword">while</span> b:<br>        a, b = b, a % b<br>    <span class="hljs-keyword">return</span> a<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">mod_inverse</span>(<span class="hljs-params">a, m</span>):<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, m):<br>        <span class="hljs-keyword">if</span> (a * i) % m == <span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">return</span> i<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">affine_decrypt</span>(<span class="hljs-params">ciphertext, key</span>):<br>    result = <span class="hljs-string">&quot;&quot;</span><br>    a, b = key<br>    a_inv = mod_inverse(a, <span class="hljs-number">26</span>)<br>    <span class="hljs-keyword">if</span> a_inv <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;The key is not valid for decryption.&quot;</span>)<br>    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> ciphertext:<br>        <span class="hljs-keyword">if</span> char.isalpha():<br>            <span class="hljs-keyword">if</span> char.isupper():<br>                result += <span class="hljs-built_in">chr</span>((a_inv * (<span class="hljs-built_in">ord</span>(char) - <span class="hljs-number">65</span> - b)) % <span class="hljs-number">26</span> + <span class="hljs-number">65</span>)<br>            <span class="hljs-keyword">else</span>:<br>                result += <span class="hljs-built_in">chr</span>((a_inv * (<span class="hljs-built_in">ord</span>(char) - <span class="hljs-number">97</span> - b)) % <span class="hljs-number">26</span> + <span class="hljs-number">97</span>)<br>        <span class="hljs-keyword">else</span>:<br>            result += char<br>    <span class="hljs-keyword">return</span> result<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">brute_force_affine</span>(<span class="hljs-params">ciphertext</span>):<br>    <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">26</span>):<br>        <span class="hljs-keyword">if</span> gcd(a, <span class="hljs-number">26</span>) == <span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>):<br>                possible_key = (a, b)<br>                decrypted_text = affine_decrypt(ciphertext, possible_key)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Attempted Key: <span class="hljs-subst">&#123;possible_key&#125;</span>, Decrypted Text: <span class="hljs-subst">&#123;decrypted_text&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 例子</span><br>encrypted_text = <span class="hljs-string">&quot;XQOJWNIIR&quot;</span><br>brute_force_affine(encrypted_text)<br><br></code></pre></td></tr></table></figure>
+
+<p>破解后可以得到下面的结果：</p>
+<img src="/2024/01/13/%E4%BB%BF%E5%B0%84%E5%AF%86%E7%A0%81/image-20240113103300183.png" srcset="/img/loading.gif" lazyload class="" title="image-20240113103300183">
+
+
+
+
+
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Mayfly-nymph/p/12394329.html">https://www.cnblogs.com/Mayfly-nymph/p/12394329.html</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AF%86%E7%A0%81/" class="category-chain-item">密码</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" class="print-no-link">#古典密码</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>密码学-仿射密码</div>
+      <div>https://erkangkang.github.io/2024/01/13/仿射密码/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>尔康康康康</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/" title="密码学-CTF中常见RSA题型">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">密码学-CTF中常见RSA题型</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/31/2023%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" title="2023年度总结">
+                        <span class="hidden-mobile">2023年度总结</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

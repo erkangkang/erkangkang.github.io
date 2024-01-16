@@ -1,0 +1,750 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/red.jpg">
+  <link rel="icon" href="/img/red.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="尔康康康康">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="CTF中常见的RSA题型一.分解得到p,q，实现对密码的攻击当n不大或者n已经被分解过之后，可以尝试使用该方法 可以使用大整数分解网站查询有无已经分解出来的http:&#x2F;&#x2F;factordb.com&#x2F; 本地的话可以使用yafu进行分解。 分解出p,q后即可得到私钥，从而实现破解密文。 以这个为例，我们仅了解n,c,e,但是我们可以分解n,分解结果如下   得到分解结果后就可以正常RSA脚本解密了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学-CTF中常见RSA题型">
+<meta property="og:url" content="https://erkangkang.github.io/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/index.html">
+<meta property="og:site_name" content="尔康康康康">
+<meta property="og:description" content="CTF中常见的RSA题型一.分解得到p,q，实现对密码的攻击当n不大或者n已经被分解过之后，可以尝试使用该方法 可以使用大整数分解网站查询有无已经分解出来的http:&#x2F;&#x2F;factordb.com&#x2F; 本地的话可以使用yafu进行分解。 分解出p,q后即可得到私钥，从而实现破解密文。 以这个为例，我们仅了解n,c,e,但是我们可以分解n,分解结果如下   得到分解结果后就可以正常RSA脚本解密了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/image-20240113154636401.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/image-20240113155956531.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/image-20240113162211573.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/image-20240113162255218.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/image-20240113163629975.png">
+<meta property="article:published_time" content="2024-01-13T07:50:10.000Z">
+<meta property="article:modified_time" content="2024-01-13T08:42:44.476Z">
+<meta property="article:author" content="尔康康康康">
+<meta property="article:tag" content="CTF-Crypto">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://erkangkang.github.io/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/image-20240113154636401.png">
+  
+  
+  
+  <title>密码学-CTF中常见RSA题型 - 尔康康康康</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erkangkang.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":null,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"pgXLabB07JIbb2xkpF8QuTDd-gzGzoHsz","app_key":"NdAK7NEnw4oYGFA92BPO0cMN","pv_format":"总访问量 {} 次","uv_format":"总访客数 {} 人","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>尔康康康康</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="密码学-CTF中常见RSA题型"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 15:50" pubdate>
+          2024年1月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          820 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">密码学-CTF中常见RSA题型</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="CTF中常见的RSA题型"><a href="#CTF中常见的RSA题型" class="headerlink" title="CTF中常见的RSA题型"></a>CTF中常见的RSA题型</h1><h3 id="一-分解得到p-q，实现对密码的攻击"><a href="#一-分解得到p-q，实现对密码的攻击" class="headerlink" title="一.分解得到p,q，实现对密码的攻击"></a>一.分解得到p,q，实现对密码的攻击</h3><p>当n不大或者n已经被分解过之后，可以尝试使用该方法</p>
+<p>可以使用大整数分解网站查询有无已经分解出来的<a target="_blank" rel="noopener" href="http://factordb.com/">http://factordb.com/</a></p>
+<p>本地的话可以使用yafu进行分解。</p>
+<p>分解出p,q后即可得到私钥，从而实现破解密文。</p>
+<p>以这个为例，我们仅了解n,c,e,但是我们可以分解n,分解结果如下</p>
+<img src="/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/image-20240113154636401.png" srcset="/img/loading.gif" lazyload class="" title="image-20240113154636401">
+
+<p>得到分解结果后就可以正常RSA脚本解密了</p>
+<img src="/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/image-20240113155956531.png" srcset="/img/loading.gif" lazyload class="" title="image-20240113155956531">
+
+<p>所用脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes<br>q = <span class="hljs-number">189239861511125143212536989589123569301</span><br>p = <span class="hljs-number">386123125371923651191219869811293586459</span><br>e = <span class="hljs-number">65537</span><br>c = <span class="hljs-number">28767758880940662779934612526152562406674613203406706867456395986985664083182</span><br>n = <span class="hljs-number">73069886771625642807435783661014062604264768481735145873508846925735521695159</span><br>n = q*p<br><span class="hljs-built_in">print</span>(n)<br>d = gmpy2.invert(e, (p - <span class="hljs-number">1</span>) * (q - <span class="hljs-number">1</span>))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;d=&quot;</span>,d)<br>m = <span class="hljs-built_in">pow</span>(c, d, n)<br><span class="hljs-built_in">print</span>(m)<br><span class="hljs-built_in">print</span>(long_to_bytes(m))<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="二-低加密指数攻击"><a href="#二-低加密指数攻击" class="headerlink" title="二.低加密指数攻击"></a>二.低加密指数攻击</h3><p>当e很小的时候，可以尝试该攻击方式。</p>
+<p>RSA的加解密原理中有c&#x3D;m^e+kn,我们可以对k进行爆破，直到c-kn可以开根，从而得到m。</p>
+<p>在这个实例中，我们可以发现n很大，尝试大整数分解后无果，但是e很小。</p>
+<img src="/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/image-20240113162211573.png" srcset="/img/loading.gif" lazyload class="" title="image-20240113162211573">
+
+<p>尝试进行低加密指数攻击，可以得到原始明文</p>
+<img src="/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/image-20240113162255218.png" srcset="/img/loading.gif" lazyload class="" title="image-20240113162255218">
+
+<p>以下为使用的脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> gmpy2 <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br><br>n=<span class="hljs-number">0x52d483c27cd806550fbe0e37a61af2e7cf5e0efb723dfc81174c918a27627779b21fa3c851e9e94188eaee3d5cd6f752406a43fbecb53e80836ff1e185d3ccd7782ea846c2e91a7b0808986666e0bdadbfb7bdd65670a589a4d2478e9adcafe97c6ee23614bcb2ecc23580f4d2e3cc1ecfec25c50da4bc754dde6c8bfd8d1fc16956c74d8e9196046a01dc9f3024e11461c294f29d7421140732fedacac97b8fe50999117d27943c953f18c4ff4f8c258d839764078d4b6ef6e8591e0ff5563b31a39e6374d0d41c8c46921c25e5904a817ef8e39e5c9b71225a83269693e0b7e3218fc5e5a1e8412ba16e588b3d6ac536dce39fcdfce81eec79979ea6872793</span><br><br>e=<span class="hljs-number">0x3</span><br>c=<span class="hljs-number">0x10652cdfaa6b63f6d7bd1109da08181e500e5643f5b240a9024bfa84d5f2cac9310562978347bb232d63e7289283871efab83d84ff5a7b64a94a79d34cfbd4ef121723ba1f663e514f83f6f01492b4e13e1bb4296d96ea5a353d3bf2edd2f449c03c4a3e995237985a596908adc741f32365</span><br><br><br>n=<span class="hljs-built_in">int</span>(n)<br>e=<span class="hljs-built_in">int</span>(e)<br>c=<span class="hljs-built_in">int</span>(c)<br><br>m=iroot(c,e)<br><span class="hljs-keyword">if</span> m[<span class="hljs-number">1</span>]:<br>    m=m[<span class="hljs-number">0</span>]<br>    <span class="hljs-built_in">print</span>(long_to_bytes(m))<br></code></pre></td></tr></table></figure>
+
+<h3 id="三-共模攻击"><a href="#三-共模攻击" class="headerlink" title="三.共模攻击"></a>三.共模攻击</h3><p>当存在多组的c和e时，e之间互质，模数n相同，可以尝试进行共模攻击，以下为详细步骤</p>
+<ol>
+<li><strong>获取两个不同的RSA公钥：</strong> 攻击者首先需要获取两个不同的RSA公钥，这两个公钥具有相同的共模（即两个公钥的N值相同），但指数（e值）是不同的。</li>
+<li><strong>确定公共模数N：</strong> 攻击者知道两个公钥的N值相同。N是两个素数（p和q）的乘积，而这两个素数生成了不同的RSA公钥。攻击者需要将N值提取出来，这样他们就能够使用相同的N进行攻击。</li>
+<li><strong>计算最大公约数（GCD）：</strong> 使用欧几里得算法，攻击者计算两个公钥的指数之间的最大公约数（GCD）。这是攻击的关键步骤，因为共模攻击的基础是使用GCD来找到两个指数的线性组合，从而获得一个可以破解加密的私钥。</li>
+<li><strong>计算私钥：</strong> 一旦攻击者找到两个指数的线性组合，他们就可以使用扩展的欧几里得算法来计算相应的私钥d。私钥d是用于解密信息的关键。</li>
+<li><strong>解密信息：</strong> 攻击者使用计算出的私钥d来解密之前被RSA加密的信息。</li>
+</ol>
+<p>以下面题目为例，可以看到仅知道两组的e和c,可以进行RSA共模攻击</p>
+<img src="/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/image-20240113163629975.png" srcset="/img/loading.gif" lazyload class="" title="image-20240113163629975">
+
+<p>使用脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#coding:utf-8</span><br><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">import</span> libnum<br>c1= <span class="hljs-number">295658788074157816670393593671184451782123605135184996662528766686642109492132533952160456440919197939935742027629210419312032730004032666912404179229952394343569590488768472800784830058534578639706805456277578757250365834591813481786084959844340418320620440636997732915872346619679993987903742079972676425404864295283955565746004124045155664762158516005326368384488346997494926539295740248007606864906884407198601326915643000764477435205579583836917598642053869541648731754384026407310786288997756775232852732033054591953078116290088267188296560877481534143707414153749140670404213262630122369941889862912426176115220410931992046973925991075473656781794097329513119548617920256625579072719981729556158392454956362838720993254919638177786730004086883044525967823454986241038123671907279715773848673713008902432841449556980494600938989397567019338970200872333713986608537678650318511128703055185979834233315117153115613952940778789222515375743186066883492596068186378372611075958909412662251913621375996518671118244409393829141365207153662416265238312206577474940661548038715230313608405518108581922154335405303862701783678336161505643508831482409054761542959278392940037561736468155509922530420964726953308604138731805543997557197893</span><br>c2= <span class="hljs-number">219454357017359138238563345020257296433275019950745269658921329153689267055871241202626317639487122341365759606018366576305678949982408366815977617307888894995289951707241009621444691307275542686770303994110416384086739599181934011812163156338859395115724413628620575935425221522079154607411877822646179457455118804970038865452163833416447505142114976758532806787419762250921421272492466133659234602794242531776209324085944417173098820895755851386042954303555790085402616519592065446023510096773546730662074307900123349548340507067971393642039476326402523930789953483843698593104578179169624886357604650615249286150367204109726460230037005175927865466199600272190112483494387929732049738312695796015009178606906549093365261114132002222704510637261038978031857378729856467918978246977163353146981239215886053379980533235786905270211605457443266127512667882149285155542735532327780898540341696557860555884277608448996773250847560675650046440569736010800155992053362696097992699863059686881689842065077997427372972290872427656847223849769329713841670853267584161386494525686204330028142217737052411422895042170169703550774908415280261731967511925122636118468176645781785352430657090024109246103061415446942211482659025722233229083093876</span><br>n= <span class="hljs-number">549785700554963543393222974982211136067042846536450239199968863551137077564447156832697813202963334596948298760762991663065504535035143397250208506445202607659676332816610122258862787906629525548439909792727593939957178783466989816894454522630301104349317697612174888605090061231211194974337772507249418567229560145454791075929946332668360553910328900103264562348881791004831033587660163923517440406942993348972589262051083908075790422096042338651001937740085414301019827335549437397656318095919875053213333008551761167437683250592542156348138055482054331330609375930693247365749085041596578748797801601289693449629548744535914348450016287545136436964138806081283470239420969311905998245715160353982174880912315601876305613349276824998688275587308133069178764001924866079232824850209407236694426779262951463035278887804883917516580169051530590466082511045503107508117656821592538792566264160105940730326929474477787053681516844548383814388361089499629312831727731267796167205124844987064389097138747938870221504684958713047985374714612321540288239995935347905120710583169131356970267386562665138437631517802641426575996558648777831102462652517305151412695166331935115971277205305816897886952646432233312318756155702046584205507027737</span><br>e1 = <span class="hljs-number">3247473589</span><br>e2 = <span class="hljs-number">3698409173</span><br><br><span class="hljs-comment">#共模攻击</span><br><span class="hljs-comment">#共模攻击函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rsa_gong_N_def</span>(<span class="hljs-params">e1,e2,c1,c2,n</span>):<br>    e1, e2, c1, c2, n=<span class="hljs-built_in">int</span>(e1),<span class="hljs-built_in">int</span>(e2),<span class="hljs-built_in">int</span>(c1),<span class="hljs-built_in">int</span>(c2),<span class="hljs-built_in">int</span>(n)<br>    s = gmpy2.gcdext(e1, e2)<br>    s1 = s[<span class="hljs-number">1</span>]<br>    s2 = s[<span class="hljs-number">2</span>]<br>    <span class="hljs-keyword">if</span> s1 &lt; <span class="hljs-number">0</span>:<br>        s1 = - s1<br>        c1 = gmpy2.invert(c1, n)<br>    <span class="hljs-keyword">elif</span> s2 &lt; <span class="hljs-number">0</span>:<br>        s2 = - s2<br>        c2 = gmpy2.invert(c2, n)<br>    m = (<span class="hljs-built_in">pow</span>(c1,s1,n) * <span class="hljs-built_in">pow</span>(c2 ,s2 ,n)) % n<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">int</span>(m)<br>m = rsa_gong_N_def(e1,e2,c1,c2,n)<br><span class="hljs-built_in">print</span>(m)<br><span class="hljs-built_in">print</span>(libnum.n2s(<span class="hljs-built_in">int</span>(m)))<br></code></pre></td></tr></table></figure>
+
+
+
+<p>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45521281/article/details/114706622">https://blog.csdn.net/qq_45521281/article/details/114706622</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF-Crypto/" class="print-no-link">#CTF-Crypto</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>密码学-CTF中常见RSA题型</div>
+      <div>https://erkangkang.github.io/2024/01/13/RSA学习240113/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>尔康康康康</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/" title="实训一_ARP欺骗实验">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">实训一_ARP欺骗实验</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/13/%E4%BB%BF%E5%B0%84%E5%AF%86%E7%A0%81/" title="密码学-仿射密码">
+                        <span class="hidden-mobile">密码学-仿射密码</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

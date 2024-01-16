@@ -1,0 +1,759 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/red.jpg">
+  <link rel="icon" href="/img/red.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="尔康康康康">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="实训一_ARP欺骗实验一·前置知识（1）协议简介SMTP称为简单邮件传输协议（Simple Mail Transfer Protocal），目标是向用户提供高效、可靠的邮件传输。它的一个重要特点是它能够在传送中接力传送邮件，即邮件可以通过不同网络上的主机接力式传送。通常它工作在两种情况下：一是邮件从客户机传输到服务器；二是从某一个服务器传输到另一个服务器。SMTP是一个请求&#x2F;响应协议，它">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实训一_ARP欺骗实验">
+<meta property="og:url" content="https://erkangkang.github.io/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:site_name" content="尔康康康康">
+<meta property="og:description" content="实训一_ARP欺骗实验一·前置知识（1）协议简介SMTP称为简单邮件传输协议（Simple Mail Transfer Protocal），目标是向用户提供高效、可靠的邮件传输。它的一个重要特点是它能够在传送中接力传送邮件，即邮件可以通过不同网络上的主机接力式传送。通常它工作在两种情况下：一是邮件从客户机传输到服务器；二是从某一个服务器传输到另一个服务器。SMTP是一个请求&#x2F;响应协议，它">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114091607580.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114095012880.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114095121739.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114095507893.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114101211795.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114102905015.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/b5b1bf7bab5ea98c7fee3197eaa4a2f0.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114112149420.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/da5745148268ca5eee7089d0e670f04d.png">
+<meta property="article:published_time" content="2024-01-14T06:20:10.000Z">
+<meta property="article:modified_time" content="2024-01-14T11:53:22.285Z">
+<meta property="article:author" content="尔康康康康">
+<meta property="article:tag" content="渗透">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://erkangkang.github.io/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114091607580.png">
+  
+  
+  
+  <title>实训一_ARP欺骗实验 - 尔康康康康</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erkangkang.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":null,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"pgXLabB07JIbb2xkpF8QuTDd-gzGzoHsz","app_key":"NdAK7NEnw4oYGFA92BPO0cMN","pv_format":"总访问量 {} 次","uv_format":"总访客数 {} 人","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>尔康康康康</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="实训一_ARP欺骗实验"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-14 14:20" pubdate>
+          2024年1月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">实训一_ARP欺骗实验</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="实训一-ARP欺骗实验"><a href="#实训一-ARP欺骗实验" class="headerlink" title="实训一_ARP欺骗实验"></a>实训一_ARP欺骗实验</h1><h3 id="一·前置知识"><a href="#一·前置知识" class="headerlink" title="一·前置知识"></a>一·前置知识</h3><h4 id="（1）协议简介"><a href="#（1）协议简介" class="headerlink" title="（1）协议简介"></a>（1）协议简介</h4><p>SMTP称为简单邮件传输协议（Simple Mail Transfer Protocal），目标是向用户提供高效、可靠的邮件传输。它的一个重要特点是它能够在传送中接力传送邮件，即邮件可以通过不同网络上的主机接力式传送。通常它工作在两种情况下：一是邮件从客户机传输到服务器；二是从某一个服务器传输到另一个服务器。SMTP是一个请求&#x2F;响应协议，它监听25号端口，用于接收用户的Mail请求，并与远端Mail服务器建立SMTP连接。</p>
+<h4 id="（2）SMTP工作原理"><a href="#（2）SMTP工作原理" class="headerlink" title="（2）SMTP工作原理"></a>（2）SMTP工作原理</h4><p>SMTP通常有两种工作模式。发送SMTP和接收SMTP。具体工作方式为：发送SMTP在接收到用户的邮件请求后，判断此邮件是否为本地邮件，若是直接投送到用户的邮箱，否则向DNS查询远端邮件服务器的MX记录，并建立与远端接收SMTP之间的一个双向传送通道，此后SMTP命令由发送SMTP发出，由接收SMTP接收，而应答则反方向传送。一旦传送通道建立，SMTP发送者发送MAIL命令指明邮件发送者。如果SMTP接收者可以接收邮件则返回OK应答。SMTP发送者再发出RCPT命令确认邮件是否接收到。如果SMTP接收者接收，则返回OK应答；如果不能接收到，则发出拒绝接收应答（但不中止整个邮件操作），双方将如此反复多次。当接收者收到全部邮件后会接收到特别的序列，入伏哦接收者成功处理了邮件，则返回OK应答。</p>
+<h4 id="（3）ARP欺骗原理"><a href="#（3）ARP欺骗原理" class="headerlink" title="（3）ARP欺骗原理"></a>（3）ARP欺骗原理</h4><p><strong>ARP协议简介：</strong> ARP是一种用于解析IP地址和MAC地址之间关系的协议。当一台计算机需要与另一台计算机通信时，它会使用ARP协议查询目标IP地址对应的MAC地址。</p>
+<p><strong>攻击者发送虚假ARP响应：</strong> 攻击者通过发送虚假的ARP响应，欺骗目标计算机。攻击者向网络中的目标发送ARP响应，声称自己是另一台计算机的MAC地址。这样，目标计算机将错误的MAC地址与目标IP地址关联起来。</p>
+<p><strong>目标计算机更新ARP缓存：</strong> 收到虚假ARP响应的目标计算机会将欺骗者提供的错误MAC地址存储在其ARP缓存中。此时，目标计算机会认为欺骗者的MAC地址是目标IP地址的正确映射。</p>
+<p><strong>流量被重定向：</strong> 由于目标计算机已经将错误的MAC地址存储在ARP缓存中，所有发送到目标IP地址的网络流量都将被发送到欺骗者而不是真正的目标。</p>
+<p><strong>中间人攻击：</strong> 攻击者可以在中间人位置拦截、修改或监视通过它的所有流量。这允许攻击者捕获敏感信息，例如用户名、密码等，或者对通信进行操纵。</p>
+<h3 id="二-实验原理"><a href="#二-实验原理" class="headerlink" title="二.实验原理"></a>二.实验原理</h3><p>Kali作为攻击者，利用arp欺骗成为受害者Ubuntu和VMware网关之间的中间人，从而获取Ubuntu访问163 SMTP服务器的数据流，随之进行进一步的分析利用。</p>
+<h3 id="三-详细实验步骤"><a href="#三-详细实验步骤" class="headerlink" title="三.详细实验步骤"></a>三.详细实验步骤</h3><p>攻击机：kail  192.168.63.136 00:0c:29:dc:86:ac</p>
+<p>目标机：ubuntu 192.168.63.129 00:0c:29:4b:00:4e</p>
+<p>网关：192.168.63.1   00:50:56:C0:00:08</p>
+<p>在攻击机kail中启用流量转发，这样被攻击机就不会断网</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forword <br></code></pre></td></tr></table></figure>
+
+<p>启动ettercap -G启动图形化界面（该工具已经内置在kail中，无需再次安装）</p>
+<img src="/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114091607580.png" srcset="/img/loading.gif" lazyload class="" title="image-20240114091607580">
+
+<p>我们选择目标网关192.168.63.1与目标地址192.168.63.129</p>
+<img src="/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114095012880.png" srcset="/img/loading.gif" lazyload class="" title="image-20240114095012880">
+
+<p>进行自动ARP欺骗</p>
+<img src="/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114095121739.png" srcset="/img/loading.gif" lazyload class="" title="image-20240114095121739">
+
+<p>此时我们在目标机中输入arp查看网关地址，发现已将变成了攻击机的mac地址</p>
+<img src="/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114095507893.png" srcset="/img/loading.gif" lazyload class="" title="image-20240114095507893">
+
+<p>尝试获取目标主机的http信息，使用如下命令,将截获的数据包保存为ubuntu129.pcap</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tcpdump -i eth0 host 192.168.63.129 and tcp port 80 -w /tmp/ubuntu129.pcap<br></code></pre></td></tr></table></figure>
+
+<p>在拦截的数据包中我们可以看到目标主机曾访问了曲阜师范大学的一些网页</p>
+<img src="/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114101211795.png" srcset="/img/loading.gif" lazyload class="" title="image-20240114101211795">
+
+<p>至此，arp欺骗已基本完成，下面进行邮件拦截，首先看一下自己邮箱的SMTP和POP3服务有没有正常开启</p>
+<img src="/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114102905015.png" srcset="/img/loading.gif" lazyload class="" title="image-20240114102905015">
+
+<p>在目标机上运行脚本发送邮件即可，发送脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python</span><br><span class="hljs-comment"># -*-coding: utf-8-*-</span><br><br><span class="hljs-keyword">import</span> smtplib<br><span class="hljs-keyword">from</span> email.mime.text <span class="hljs-keyword">import</span> MIMEText<br><br>SMTPSrv = <span class="hljs-string">&quot;smtp.126.com&quot;</span><br>Sender = <span class="hljs-string">&quot;XXXX@126.com&quot;</span><span class="hljs-comment">#这里输入自己的邮箱地址</span><br>Passwd = <span class="hljs-string">&quot;your_email_password_or_app_password&quot;</span>  <span class="hljs-comment"># 使用邮箱的登录授权码而非直接密码</span><br><br>txt = <span class="hljs-string">&quot;hello qfnu!!!!&quot;</span><br>msg = MIMEText(txt)<br>msg[<span class="hljs-string">&#x27;Subject&#x27;</span>] = <span class="hljs-string">&quot;hello QFNU&quot;</span><br>msg[<span class="hljs-string">&#x27;From&#x27;</span>] = Sender<br>msg[<span class="hljs-string">&#x27;To&#x27;</span>] = <span class="hljs-string">&quot;jwkjwk@qfnu.edu.cn&quot;</span><br><br><span class="hljs-comment"># 使用SMTP_SSL连接，并将端口改为587</span><br><span class="hljs-keyword">with</span> smtplib.SMTP_SSL(SMTPSrv, <span class="hljs-number">587</span>) <span class="hljs-keyword">as</span> smtp:<br>    smtp.login(Sender, Passwd)<br>    smtp.sendmail(Sender, [<span class="hljs-string">&quot;XXXX@qfnu.edu.cn&quot;</span>], msg.as_string())<span class="hljs-comment">###这里可以填自己的收件地址</span><br><br></code></pre></td></tr></table></figure>
+
+<p>在接收端我们可以看到发送的邮件</p>
+<img src="/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/b5b1bf7bab5ea98c7fee3197eaa4a2f0.png" srcset="/img/loading.gif" lazyload class="" title="b5b1bf7bab5ea98c7fee3197eaa4a2f0">
+
+<p>在攻击机端，我们过滤出SMTP协议的数据包后，可以看到目标主机的邮件发送行为数据。我这里使用的是126邮箱的587端口，可以看到获取的数据都是加密数据，同学们感兴趣的也可以尝试使用25端口，尝试获取SMTP明文数据。</p>
+<img src="/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/image-20240114112149420.png" srcset="/img/loading.gif" lazyload class="" title="image-20240114112149420">
+
+<p>当我们用以下脚本，利用25端口测试时，可以捕获到明文数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python</span><br><span class="hljs-comment"># -*-coding: utf-8-*-</span><br><br><span class="hljs-keyword">import</span> smtplib<br><span class="hljs-keyword">from</span> email.mime.text <span class="hljs-keyword">import</span> *<br><br>SMTPSrv = <span class="hljs-string">&quot;smtp.163.com&quot;</span><br>Sender = <span class="hljs-string">&quot;XXXX@163.com&quot;</span><br>Passwd = <span class="hljs-string">&quot;XXXXX&quot;</span><br><br>txt = <span class="hljs-string">&quot;Hello, Qufu Normal University students&quot;</span><br>msg = MIMEText(txt)<br>msg[<span class="hljs-string">&#x27;Subject&#x27;</span>] = <span class="hljs-string">&quot;hello,QFNU&quot;</span><br>msg[<span class="hljs-string">&#x27;From&#x27;</span>] = Sender<br>msg[<span class="hljs-string">&#x27;To&#x27;</span> ] = <span class="hljs-string">&quot;XXXX@qfnu.edu.cn&quot;</span><br><br>smtp = smtplib.SMTP(SMTPSrv, <span class="hljs-number">25</span>)<br>smtp.login(Sender, Passwd)<br>smtp.sendmail(Sender, [Sender], msg.as_string())<br>smtp.quit()<br></code></pre></td></tr></table></figure>
+
+<p>我们可以在攻击机中看到捕获的明文信息，例如收件人，发件人，邮件内容等。</p>
+<img src="/2024/01/14/%E5%AE%9E%E8%AE%AD%E4%B8%80_ARP%E6%AC%BA%E9%AA%97%E5%AE%9E%E9%AA%8C/da5745148268ca5eee7089d0e670f04d.png" srcset="/img/loading.gif" lazyload class="" title="da5745148268ca5eee7089d0e670f04d">
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="category-chain-item">渗透测试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B8%97%E9%80%8F/" class="print-no-link">#渗透</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>实训一_ARP欺骗实验</div>
+      <div>https://erkangkang.github.io/2024/01/14/实训一_ARP欺骗实验/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>尔康康康康</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/14/%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E7%9A%84%E8%BF%91%E6%BA%90%E6%94%BB%E5%87%BB/" title="实训二_一些简单的近源攻击">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">实训二_一些简单的近源攻击</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/13/RSA%E5%AD%A6%E4%B9%A0240113/" title="密码学-CTF中常见RSA题型">
+                        <span class="hidden-mobile">密码学-CTF中常见RSA题型</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

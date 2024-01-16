@@ -154,31 +154,6 @@
   
   
   <entry>
-    <title>2023强网杯-谍影重重2.0</title>
-    <link href="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/"/>
-    <url>/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/</url>
-    
-    <content type="html"><![CDATA[<h1 id="谍影重重2-0"><a href="#谍影重重2-0" class="headerlink" title="谍影重重2.0"></a>谍影重重2.0</h1><p>看一眼题目，附件下载下来是一个流量包</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled.png" class="" title="Untitled"><p>要找出流量包中设计ICAO CODE的数据，查了查ICAO CODE的相关信息，应该是个24位地址</p><p>可以找到相关的格式以及样例</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%201.png" class="" title="Untitled 1"><p>打开流量包，都是tcp，考虑信息在tcp payload中</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%203.png" class="" title="Untitled 3"><p>将流量包中所有的tcp payload都导出</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%204.png" class="" title="Untitled 4"><p>搜索获得了可用信息的格式，以及如何解码（可见：<a href="https://mode-s.org/decode/content/ads-b/1-basics.html">https://mode-s.org/decode/content/ads-b/1-basics.html</a>）</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%205.png" class="" title="Untitled 5"><p>将有效信息进行提取和排序</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%206.png" class="" title="Untitled 6"><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%207.png" class="" title="Untitled 7"><p>将提取后的信息解码后进行速度比较可以得到答案</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%208.png" class="" title="Untitled 8"><p>最快的ICAD为79a05e，md5后就是flag了</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>CTF</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>CTF-Misc</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>2023强网杯-speedup</title>
     <link href="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-speedup/"/>
     <url>/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-speedup/</url>
@@ -196,6 +171,31 @@
     <tags>
       
       <tag>CTF-Crypto</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2023强网杯-谍影重重2.0</title>
+    <link href="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/"/>
+    <url>/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="谍影重重2-0"><a href="#谍影重重2-0" class="headerlink" title="谍影重重2.0"></a>谍影重重2.0</h1><p>看一眼题目，附件下载下来是一个流量包</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled.png" class="" title="Untitled"><p>要找出流量包中设计ICAO CODE的数据，查了查ICAO CODE的相关信息，应该是个24位地址</p><p>可以找到相关的格式以及样例</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%201.png" class="" title="Untitled 1"><p>打开流量包，都是tcp，考虑信息在tcp payload中</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%203.png" class="" title="Untitled 3"><p>将流量包中所有的tcp payload都导出</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%204.png" class="" title="Untitled 4"><p>搜索获得了可用信息的格式，以及如何解码（可见：<a href="https://mode-s.org/decode/content/ads-b/1-basics.html">https://mode-s.org/decode/content/ads-b/1-basics.html</a>）</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%205.png" class="" title="Untitled 5"><p>将有效信息进行提取和排序</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%206.png" class="" title="Untitled 6"><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%207.png" class="" title="Untitled 7"><p>将提取后的信息解码后进行速度比较可以得到答案</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%208.png" class="" title="Untitled 8"><p>最快的ICAD为79a05e，md5后就是flag了</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF-Misc</tag>
       
     </tags>
     

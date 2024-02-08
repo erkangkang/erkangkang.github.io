@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>2024西湖论剑取证题目easy_rawraw</title>
+    <link href="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/"/>
+    <url>/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/</url>
+    
+    <content type="html"><![CDATA[<h3 id="2024西湖论剑-easy-rawraw"><a href="#2024西湖论剑-easy-rawraw" class="headerlink" title="2024西湖论剑-easy_rawraw"></a>2024西湖论剑-easy_rawraw</h3><p>题目到手是两个附件，一个raw镜像，一个压缩包，压缩包有密码，暴力破解打不开，密码大概率是在镜像文件中。</p><p>先用volatility分析下,首先是查到一个密码das123admin321</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240208235238844.png" class="" title="image-20240208235238844"><p>在剪切板中又发现一个密码DasrIa456sAdmIn987</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209000903083.png" class="" title="image-20240209000903083"><p>在查看cmd执行了哪些进程时，发现pass.zip文件</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002406753.png" class="" title="image-20240209002406753"><p>将pass.zip文件提取出来分析一波</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002647806.png" class="" title="image-20240209002647806"><p>提取出来的文件为bat文件，将后缀改为zip</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002740245.png" class="" title="image-20240209002740245"><p>压缩包解压出来后是一张图片</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002855635.png" class="" title="image-20240209002855635"><p>010Editor分析下，里面还有东西</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003217044.png" class="" title="image-20240209003217044"><p>用binwalk分离下</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003340686.png" class="" title="image-20240209003340686"><p>又是一个zip压缩包</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003402787.png" class="" title="image-20240209003402787"><p>需要解压密码</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003502151.png" class="" title="image-20240209003502151"><p>纯数字暴力破解成功，密码为20240210</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003614986.png" class="" title="image-20240209003614986"><p>解压出来pass.txt，看着像密钥文件，先放一边，先解决另一个压缩包</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003800480.png" class="" title="image-20240209003800480"><p>这个压缩包暴力破解无果，尝试用上面得到的几个密码，填入DasrIa456sAdmIn987成功解压缩，得到一个镜像文件，尝试进行挂载</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003955339.png" class="" title="image-20240209003955339"><p>这里选择使用前面得到的密钥文件</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004045305.png" class="" title="image-20240209004045305"><p>成功挂载，得到xlsx表格</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004131989.png" class="" title="image-20240209004131989"><p>打开文件需要密码，尝试用上面得到的密码，填入das123admin321成功解密</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004157653.png" class="" title="image-20240209004157653"><p>搜索关键词发现flag</p><img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004303665.png" class="" title="image-20240209004303665">]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF-取证</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>HFish部署与测试</title>
     <link href="/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
     <url>/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/</url>

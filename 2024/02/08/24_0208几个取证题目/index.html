@@ -16,28 +16,40 @@
   <meta name="author" content="尔康康康康">
   <meta name="keywords" content="">
   
-    <meta name="description" content="HFish部署与测试一.介绍HFish是一款社区型免费蜜罐，侧重企业安全场景，从内网失陷检测、外网威胁感知、威胁情报生产三个场景出发，为用户提供可独立操作且实用的功能，通过安全、敏捷、可靠的中低交互蜜罐增加用户在失陷感知和威胁情报领域的能力。 HFish支持基本网络 服务、OA系统、CRM系统、NAS存储系统、Web服务器、运维平台、安全产品、无线AP、交换机&#x2F;路由器、邮件系统、IoT设">
+    <meta name="description" content="2024西湖论剑-easy_rawraw题目到手是两个附件，一个raw镜像，一个压缩包，压缩包有密码，暴力破解打不开，密码大概率是在镜像文件中。 先用volatility分析下,首先是查到一个密码das123admin321   在剪切板中又发现一个密码DasrIa456sAdmIn987   在查看cmd执行了哪些进程时，发现pass.zip文件   将pass.zip文件提取出来分析一波">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HFish部署与测试">
-<meta property="og:url" content="https://erkangkang.github.io/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/index.html">
+<meta property="og:title" content="2024西湖论剑取证题目easy_rawraw">
+<meta property="og:url" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/index.html">
 <meta property="og:site_name" content="尔康康康康">
-<meta property="og:description" content="HFish部署与测试一.介绍HFish是一款社区型免费蜜罐，侧重企业安全场景，从内网失陷检测、外网威胁感知、威胁情报生产三个场景出发，为用户提供可独立操作且实用的功能，通过安全、敏捷、可靠的中低交互蜜罐增加用户在失陷感知和威胁情报领域的能力。 HFish支持基本网络 服务、OA系统、CRM系统、NAS存储系统、Web服务器、运维平台、安全产品、无线AP、交换机&#x2F;路由器、邮件系统、IoT设">
+<meta property="og:description" content="2024西湖论剑-easy_rawraw题目到手是两个附件，一个raw镜像，一个压缩包，压缩包有密码，暴力破解打不开，密码大概率是在镜像文件中。 先用volatility分析下,首先是查到一个密码das123admin321   在剪切板中又发现一个密码DasrIa456sAdmIn987   在查看cmd执行了哪些进程时，发现pass.zip文件   将pass.zip文件提取出来分析一波">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://erkangkang.github.io/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/image-20240115102442930-1705286751012-1.png">
-<meta property="og:image" content="https://erkangkang.github.io/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/image-20240115102511007-1705286751013-2.png">
-<meta property="og:image" content="https://erkangkang.github.io/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/image-20240115103719825-1705286751014-3.png">
-<meta property="og:image" content="https://erkangkang.github.io/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/image-20240115104208478-1705286751014-4.png">
-<meta property="og:image" content="https://erkangkang.github.io/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/image-20240115104304055-1705286751014-5.png">
-<meta property="article:published_time" content="2024-01-15T02:20:10.000Z">
-<meta property="article:modified_time" content="2024-01-15T02:49:18.282Z">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240208235238844.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209000903083.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002406753.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002647806.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002740245.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002855635.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003217044.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003340686.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003402787.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003502151.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003614986.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003800480.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003955339.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004045305.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004131989.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004157653.png">
+<meta property="og:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004303665.png">
+<meta property="article:published_time" content="2024-02-08T10:20:10.000Z">
+<meta property="article:modified_time" content="2024-02-08T16:45:42.608Z">
 <meta property="article:author" content="尔康康康康">
-<meta property="article:tag" content="蜜罐">
+<meta property="article:tag" content="CTF-取证">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://erkangkang.github.io/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/image-20240115102442930-1705286751012-1.png">
+<meta name="twitter:image" content="https://erkangkang.github.io/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240208235238844.png">
   
   
   
-  <title>HFish部署与测试 - 尔康康康康</title>
+  <title>2024西湖论剑取证题目easy_rawraw - 尔康康康康</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +244,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="HFish部署与测试"></span>
+            <span id="subtitle" data-typed-text="2024西湖论剑取证题目easy_rawraw"></span>
           
         </div>
 
@@ -243,8 +255,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-15 10:20" pubdate>
-          2024年1月15日 上午
+        <time datetime="2024-02-08 18:20" pubdate>
+          2024年2月8日 晚上
         </time>
       </span>
     
@@ -255,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          446 字
+          302 字
         
       </span>
     
@@ -266,7 +278,7 @@
         
         
         
-          4 分钟
+          3 分钟
         
       </span>
     
@@ -303,36 +315,62 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">HFish部署与测试</h1>
+            <h1 id="seo-header">2024西湖论剑取证题目easy_rawraw</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="HFish部署与测试"><a href="#HFish部署与测试" class="headerlink" title="HFish部署与测试"></a>HFish部署与测试</h1><h3 id="一-介绍"><a href="#一-介绍" class="headerlink" title="一.介绍"></a>一.介绍</h3><p>HFish是一款社区型免费蜜罐，侧重企业安全场景，从内网失陷检测、外网威胁感知、威胁情报生产三个场景出发，为用户提供可独立操作且实用的功能，通过安全、敏捷、可靠的中低交互蜜罐增加用户在失陷感知和威胁情报领域的能力。</p>
-<p>HFish支持基本网络 服务、OA系统、CRM系统、NAS存储系统、Web服务器、运维平台、安全产品、无线AP、交换机&#x2F;路由器、邮件系统、IoT设备等90多种蜜罐服务、支持用户制作自定义Web蜜罐、支持流量牵引到免费云蜜网、支持可开关的全端口扫描感知能力、支持可自定义的蜜饵配置、一键部署、跨平台多架构，支持Linux x32&#x2F;x64&#x2F;ARM、Windows x32&#x2F;x64平台和多种国产操作系统、支持龙芯、海光、飞腾、鲲鹏、腾云、兆芯等国产CPU、极低的性能要求、邮件&#x2F;syslog&#x2F;webhook&#x2F;企业微信&#x2F;钉钉&#x2F;飞书告警等多项特性，帮助用户降低运维成本，提升运营效率。</p>
-<p>详情可见项目官网：<a target="_blank" rel="noopener" href="https://hfish.net/">https://hfish.net/</a></p>
-<h3 id="二-部署与配置"><a href="#二-部署与配置" class="headerlink" title="二.部署与配置"></a>二.部署与配置</h3><p>首先关闭防火墙，用于web管理与管理端通信</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">firewall-cmd --add-port=4433/tcp --permanent   <span class="hljs-comment">#（用于web界面启动）</span><br>firewall-cmd --add-port=4434/tcp --permanent   <span class="hljs-comment">#（用于节点与管理端通信）</span><br>firewall-cmd --reload<br></code></pre></td></tr></table></figure>
+                <h3 id="2024西湖论剑-easy-rawraw"><a href="#2024西湖论剑-easy-rawraw" class="headerlink" title="2024西湖论剑-easy_rawraw"></a>2024西湖论剑-easy_rawraw</h3><p>题目到手是两个附件，一个raw镜像，一个压缩包，压缩包有密码，暴力破解打不开，密码大概率是在镜像文件中。</p>
+<p>先用volatility分析下,首先是查到一个密码das123admin321</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240208235238844.png" srcset="/img/loading.gif" lazyload class="" title="image-20240208235238844">
 
-<img src="/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/image-20240115102442930-1705286751012-1.png" srcset="/img/loading.gif" lazyload class="" title="image-20240115102442930">
+<p>在剪切板中又发现一个密码DasrIa456sAdmIn987</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209000903083.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209000903083">
 
-<p>使用root权限一键部署</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash &lt;(curl -sS -L https://hfish.net/webinstall.sh)<br></code></pre></td></tr></table></figure>
+<p>在查看cmd执行了哪些进程时，发现pass.zip文件</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002406753.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209002406753">
 
-<img src="/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/image-20240115102511007-1705286751013-2.png" srcset="/img/loading.gif" lazyload class="" title="image-20240115102511007">
+<p>将pass.zip文件提取出来分析一波</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002647806.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209002647806">
 
-<p>部署完成后进行登录</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">登陆链接：<span class="hljs-link">https://</span>[<span class="hljs-string">ip</span>]:4433/web/<br>账号：admin<br>密码：HFish2021<br></code></pre></td></tr></table></figure>
+<p>提取出来的文件为bat文件，将后缀改为zip</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002740245.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209002740245">
 
-<p>登录后即可进入管理平台</p>
-<img src="/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/image-20240115103719825-1705286751014-3.png" srcset="/img/loading.gif" lazyload class="" title="image-20240115103719825">
+<p>压缩包解压出来后是一张图片</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209002855635.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209002855635">
 
-<p>可以根据自己情况部署蜜罐，蜜网。</p>
-<img src="/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/image-20240115104208478-1705286751014-4.png" srcset="/img/loading.gif" lazyload class="" title="image-20240115104208478">
+<p>010Editor分析下，里面还有东西</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003217044.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209003217044">
 
-<p>可以查看威胁情况。</p>
-<img src="/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/image-20240115104304055-1705286751014-5.png" srcset="/img/loading.gif" lazyload class="" title="image-20240115104304055">
+<p>用binwalk分离下</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003340686.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209003340686">
 
+<p>又是一个zip压缩包</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003402787.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209003402787">
+
+<p>需要解压密码</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003502151.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209003502151">
+
+<p>纯数字暴力破解成功，密码为20240210</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003614986.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209003614986">
+
+<p>解压出来pass.txt，看着像密钥文件，先放一边，先解决另一个压缩包</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003800480.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209003800480">
+
+<p>这个压缩包暴力破解无果，尝试用上面得到的几个密码，填入DasrIa456sAdmIn987成功解压缩，得到一个镜像文件，尝试进行挂载</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209003955339.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209003955339">
+
+<p>这里选择使用前面得到的密钥文件</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004045305.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209004045305">
+
+<p>成功挂载，得到xlsx表格</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004131989.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209004131989">
+
+<p>打开文件需要密码，尝试用上面得到的密码，填入das123admin321成功解密</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004157653.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209004157653">
+
+<p>搜索关键词发现flag</p>
+<img src="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/image-20240209004303665.png" srcset="/img/loading.gif" lazyload class="" title="image-20240209004303665">
 
                 
               </div>
@@ -351,7 +389,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" class="category-chain-item">安全防护</a>
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
   
   
 
@@ -366,7 +404,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%9C%9C%E7%BD%90/" class="print-no-link">#蜜罐</a>
+        <a href="/tags/CTF-%E5%8F%96%E8%AF%81/" class="print-no-link">#CTF-取证</a>
       
     </div>
   
@@ -378,8 +416,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>HFish部署与测试</div>
-      <div>https://erkangkang.github.io/2024/01/15/HFish搭建与初体验/</div>
+      <div>2024西湖论剑取证题目easy_rawraw</div>
+      <div>https://erkangkang.github.io/2024/02/08/24_0208几个取证题目/</div>
     </div>
     <div class="license-meta">
       
@@ -391,7 +429,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月15日</div>
+          <div>2024年2月8日</div>
         </div>
       
       
@@ -423,18 +461,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/" title="2024西湖论剑取证题目easy_rawraw">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2024西湖论剑取证题目easy_rawraw</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/14/%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E7%9A%84%E8%BF%91%E6%BA%90%E6%94%BB%E5%87%BB/" title="实训二_一些简单的近源攻击">
-                        <span class="hidden-mobile">实训二_一些简单的近源攻击</span>
+                      <a href="/2024/01/15/HFish%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%88%9D%E4%BD%93%E9%AA%8C/" title="HFish部署与测试">
+                        <span class="hidden-mobile">HFish部署与测试</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

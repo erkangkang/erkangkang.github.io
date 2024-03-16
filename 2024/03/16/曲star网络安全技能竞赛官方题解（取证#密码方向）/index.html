@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/red.jpg">
+  <link rel="icon" href="/img/red.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="尔康康康康">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、写在前面在上学期期末就像筹办这次面向学院新生的比赛了，寒假里跟社团的同学们出了题，基本也是面向0基础，以引导和兴趣为主，绝大部分题目都能通过现场学习或者利用搜索引擎就能解决，实际参赛人数大约三十人，也算符合预期，本次比赛使用的平台是GZCTF，github地址为：https:&#x2F;&#x2F;github.com&#x2F;GZTimeWalker&#x2F;GZCTF?tab&#x3D;readme-ov-file    二、取证部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="曲star网络安全技能竞赛官方题解（取证#密码方向）">
+<meta property="og:url" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81#%E5%AF%86%E7%A0%81%E6%96%B9%E5%90%91%EF%BC%89/index.html">
+<meta property="og:site_name" content="尔康康康康">
+<meta property="og:description" content="一、写在前面在上学期期末就像筹办这次面向学院新生的比赛了，寒假里跟社团的同学们出了题，基本也是面向0基础，以引导和兴趣为主，绝大部分题目都能通过现场学习或者利用搜索引擎就能解决，实际参赛人数大约三十人，也算符合预期，本次比赛使用的平台是GZCTF，github地址为：https:&#x2F;&#x2F;github.com&#x2F;GZTimeWalker&#x2F;GZCTF?tab&#x3D;readme-ov-file    二、取证部分">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="og:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+<meta property="article:published_time" content="2024-03-16T07:50:10.000Z">
+<meta property="article:modified_time" content="2024-03-16T12:35:55.154Z">
+<meta property="article:author" content="尔康康康康">
+<meta property="article:tag" content="CTF-Crypto">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://erkangkang.github.io/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81">
+  
+  
+  
+  <title>曲star网络安全技能竞赛官方题解（取证#密码方向） - 尔康康康康</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erkangkang.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":null,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"pgXLabB07JIbb2xkpF8QuTDd-gzGzoHsz","app_key":"NdAK7NEnw4oYGFA92BPO0cMN","pv_format":"总访问量 {} 次","uv_format":"总访客数 {} 人","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>尔康康康康</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="曲star网络安全技能竞赛官方题解（取证#密码方向）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-16 15:50" pubdate>
+          2024年3月16日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          920 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">曲star网络安全技能竞赛官方题解（取证#密码方向）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="一、写在前面"><a href="#一、写在前面" class="headerlink" title="一、写在前面"></a>一、写在前面</h3><p>在上学期期末就像筹办这次面向学院新生的比赛了，寒假里跟社团的同学们出了题，基本也是面向0基础，以引导和兴趣为主，绝大部分题目都能通过现场学习或者利用搜索引擎就能解决，实际参赛人数大约三十人，也算符合预期，本次比赛使用的平台是GZCTF，github地址为：<a target="_blank" rel="noopener" href="https://github.com/GZTimeWalker/GZCTF?tab=readme-ov-file">https://github.com/GZTimeWalker/GZCTF?tab=readme-ov-file</a></p>
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="4a32a91ed7dfa6bbfff254e88d926a14_720">
+
+<hr>
+<h3 id="二、取证部分"><a href="#二、取证部分" class="headerlink" title="二、取证部分"></a>二、取证部分</h3><p>取证部分直接使用了beginCTF的取证原题，主要是为了让参赛人员熟悉取证工具的常见使用以及命令，以下为题目解答。</p>
+<p><strong>题目一：cmd里的密码</strong></p>
+<p>题目描述：你知道cmd里藏着什么信息吗？</p>
+<p>附件是一个raw镜像文件，用volatility分析下，题目提示查看cmd，这里使用cmdscan看一下，得到flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vol.py -f hello.raw --profile=Win7SP1x64 cmdscan<br></code></pre></td></tr></table></figure>
+
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="image-20240214164917935">
+
+<p>得到第一题flag:flag{Cmd_1in3_109_i5_imp0rt@nt}</p>
+<p><strong>题目二：浏览器里的机密</strong></p>
+<p>题目描述：你知道小谢的IE浏览器里藏着什么秘密吗？</p>
+<p>用iehistory查看一下ie浏览其里的记录，寻找包含flag字符的信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vol.py -f hello.raw --profile=Win7SP1x64 iehistory |grep <span class="hljs-string">&quot;flag&quot;</span><br></code></pre></td></tr></table></figure>
+
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="image-20240214165723407">
+
+<p>得到flag,解一下url码即可</p>
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="image-20240214165752647">
+
+<p>得到第二题的flag:flag{Y0v_c@n_g3t_th3_i3hi5t0ry}</p>
+<p><strong>题目三：计算机的密码</strong></p>
+<p>题目描述：你知道这台计算机的密码是什么吗？</p>
+<p>这里使用volatility的一个插件mimikatz，可以查看明文密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vol.py -f hello.raw --profile=Win7SP1x64 mimikatz<br></code></pre></td></tr></table></figure>
+
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="image-20240214170207963">
+
+<p><strong>题目四：机密文件要妥善保存</strong></p>
+<p>题目描述：你知道机密文件里是什么吗？</p>
+<p>首先用filescan文件搜索下包含“机密”二字的文件，发现机密文件.docx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vol.py -f hello.raw --profile=Win7SP1x64 filescan |grep <span class="hljs-string">&quot;机密&quot;</span><br></code></pre></td></tr></table></figure>
+
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="image-20240214170646304">
+
+<p>将该文件提取出来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vol.py -f hello.raw --profile=Win7SP1x64 dumpfiles -Q <span class="hljs-string">&quot;0x000000001e742dd0&quot;</span> -D ./<br></code></pre></td></tr></table></figure>
+
+<p>将提取出来的文件的后缀名改为docx</p>
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="image-20240214171025827">
+
+<p>打开后是flag</p>
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="image-20240214171104212">
+
+<p>第四个题目的flag为：flag{Y0v_c@n_d0vvn_th3_fi13}</p>
+<hr>
+<h3 id="三、密码部分"><a href="#三、密码部分" class="headerlink" title="三、密码部分"></a>三、密码部分</h3><p>密码一共三道，一道摩斯密码作为签到题，一道RSA基本原理，一道共模攻击。</p>
+<p><strong>题目一：一串信息</strong></p>
+<p>题目描述：小吴同学收到了小严同学的一段信息–.- ..-. -. ..- -.-. - ..-. —-.– – — … . -.-. — -.. . .- -. -.. –.- ..-. -. ..- —–.- ，他似乎不明白这段信息是什么意思，你知道吗？该题答案为：QFNUCTF{XXXXX}格式</p>
+<p>题目解答：摩斯密码，直接翻译即可</p>
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="image-20240216181613925">
+
+<p>得到flag:QFNUCTF{MOSECODEANDQFNU}</p>
+<p><strong>题目二：RSA基本原理</strong></p>
+<p>题目描述：小明正在学习RSA的基本知识，他得到了n&#x3D;143,公钥e&#x3D;17,私钥d&#x3D;113,密文为7，请你帮助小明获得原始明文，并将结果填写在qfnuctf{}的花括号里提交。</p>
+<p>该题主要是RSA考察对于RSA基本原理的理解与运用，以下为基本原理</p>
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="image-20240216180052857">
+
+<p>以下为具体解题</p>
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="image-20240216180138616">
+
+<p>qfnuctf{24}</p>
+<p><strong>题目三：两个模数居然一样</strong></p>
+<p>题目给出了一个加密脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> gmpy2 <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>flag  = <span class="hljs-string">&#x27;qfnuctf&#123;hello,qfnu&#125;&#x27;</span> <span class="hljs-comment"># 这个肯定不是答案了，只是一个示例，不要交这个,要根据下面给出的flag1和flag2以及n求出对应的明文</span><br>p = getPrime(<span class="hljs-number">2048</span>)<br>q = getPrime(<span class="hljs-number">2048</span>)<br>m1 = bytes_to_long(<span class="hljs-built_in">bytes</span>(flag.encode()))<br>e1 = <span class="hljs-number">3247473589</span><br>e2 = <span class="hljs-number">3698409173</span><br>n = p*q<br>flag1 = <span class="hljs-built_in">pow</span>(m1,e1,n)<br>flag2 = <span class="hljs-built_in">pow</span>(m1,e2,n)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;flag1= &#x27;</span>+<span class="hljs-built_in">str</span>(flag1))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;flag2= &#x27;</span>+<span class="hljs-built_in">str</span>(flag2))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;n= &#x27;</span>+<span class="hljs-built_in">str</span>(n))<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">flag1= 375531898324321471720276787550693405944926126074533547871726457883520732075620336069698857856349767664110389234477936422812925551469947327230796475752752365747197075480396612109822690188816688534399231865889556921451532725271583005108409229113944302315960931452929768251965640072110136102810998803100270218289251314659764774405406406988875146910237333363258769870380386888063205712300117496808733178958665710960491352026882287626847563989698956075137611669927719077503029982078413515205145304087031281605244105848220755240710878523808281328701403465271357430927213451816086891502144199080263492955880118962309993091551784475480740704257954846758374594335116928093215990058427922931698414662789611585418374419001168192496352546942821679686569748514504858975280245937201976509599956219190070640722931910159891202376082602443078846876984561899775922609349952247267796907855404089551129077389329814043879192978645573649434983407084557725507168477407375979769075982703647744127720830270317403150148131275275281286997098656934538006529189371500425435164054480555059096362975409721702119543817142051199845303827671388034067147423958885812893295007047923059156622871206229236615649171793656406796341049374868687711781234013416309675891307393</span><br><span class="hljs-string">flag2= 347591103961120163519107479578764214646041926413580555921159034808799870859889507753720728589433273505124714076032185220813048552551271584771491650929245328237008883292756541687815702971199316989760860749066080758758827018661577218547597408893337410798777668369804774304516176578153390589249487773512116827667657113488826983019377203340309252099510872045559551137373937325447429868374589521025053510239282106081163136832224246458779559759558373217250858660047257353245823261531401744549892306453820531695020998680690958073028841354348536865781772305543438754053015770323099185706446441666603747389239938097575151185364684441585874525071636770258542349489265858772362316496440677775731726379341649443606870446049613431463842139155717712075683837006161101837841578652633446715854122799145591772417956444791396928022576214067381677702738954768960851229529533511975247574089188689995389417019807413139692910072698555700059983250689413419637131090024392474447894106812168336764880767084946057906002241591741598461457549990128368226663606985971290455997273202401924270593570485441285973258452624585311481046537643750900668689225577788158229821349917707601260273910477451314295521607572807141522450541704779844827335255929420213962845246185</span><br><span class="hljs-string">n= 473275489029574638227360931977793769470308219432883099013327733301445152285261672921313657317871422673496221314887066162284446626669720855498318879954358242513041418445599774640710149374769262729259493139698543069750213915625095291356772867827036300615016019069982040583630694317495477861977319590186381830468720658186347785230915864966308588258214486551896739303207203631040253414216850163902961534646144295821301945582759471754456372150563656012996951440986751347448436869638095328249525060956231983813147936851326017622197290141130813278191126734383433932751060759382005551034191430225589686890940877994057755039654383769066562050178553766128537516863289554375480984166091878421759112028273277205531813239101314779956020296798495612918172012397942175311032523132636063018157282111976981428941747584546118026130690082000531879570679739004530802936449323414423719764039191211136945878711917758594883618778475227076142998123391660063308633443844638436088446216518624403872463563266395926494540743405224869421500514559568453345227620643169712527100425481129519020528530466477990923100938142585116275469712624846477228365578980471685615099143974039791920276696717966458176113232016618706653056230008032584637485489718087281212118215867</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>两个加密使用的模数一样，考虑共模攻击，原理解析可参考：<a target="_blank" rel="noopener" href="https://ctf-wiki.org/crypto/asymmetric/rsa/rsa_module_attack/">https://ctf-wiki.org/crypto/asymmetric/rsa/rsa_module_attack/</a></p>
+<p>解密脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> libnum<br><span class="hljs-keyword">import</span> gmpy2<br><br>n=<span class="hljs-number">473275489029574638227360931977793769470308219432883099013327733301445152285261672921313657317871422673496221314887066162284446626669720855498318879954358242513041418445599774640710149374769262729259493139698543069750213915625095291356772867827036300615016019069982040583630694317495477861977319590186381830468720658186347785230915864966308588258214486551896739303207203631040253414216850163902961534646144295821301945582759471754456372150563656012996951440986751347448436869638095328249525060956231983813147936851326017622197290141130813278191126734383433932751060759382005551034191430225589686890940877994057755039654383769066562050178553766128537516863289554375480984166091878421759112028273277205531813239101314779956020296798495612918172012397942175311032523132636063018157282111976981428941747584546118026130690082000531879570679739004530802936449323414423719764039191211136945878711917758594883618778475227076142998123391660063308633443844638436088446216518624403872463563266395926494540743405224869421500514559568453345227620643169712527100425481129519020528530466477990923100938142585116275469712624846477228365578980471685615099143974039791920276696717966458176113232016618706653056230008032584637485489718087281212118215867</span><br>e1 = <span class="hljs-number">3247473589</span><br>e2 = <span class="hljs-number">3698409173</span><br>c1=<span class="hljs-number">375531898324321471720276787550693405944926126074533547871726457883520732075620336069698857856349767664110389234477936422812925551469947327230796475752752365747197075480396612109822690188816688534399231865889556921451532725271583005108409229113944302315960931452929768251965640072110136102810998803100270218289251314659764774405406406988875146910237333363258769870380386888063205712300117496808733178958665710960491352026882287626847563989698956075137611669927719077503029982078413515205145304087031281605244105848220755240710878523808281328701403465271357430927213451816086891502144199080263492955880118962309993091551784475480740704257954846758374594335116928093215990058427922931698414662789611585418374419001168192496352546942821679686569748514504858975280245937201976509599956219190070640722931910159891202376082602443078846876984561899775922609349952247267796907855404089551129077389329814043879192978645573649434983407084557725507168477407375979769075982703647744127720830270317403150148131275275281286997098656934538006529189371500425435164054480555059096362975409721702119543817142051199845303827671388034067147423958885812893295007047923059156622871206229236615649171793656406796341049374868687711781234013416309675891307393</span><br>c2=<span class="hljs-number">347591103961120163519107479578764214646041926413580555921159034808799870859889507753720728589433273505124714076032185220813048552551271584771491650929245328237008883292756541687815702971199316989760860749066080758758827018661577218547597408893337410798777668369804774304516176578153390589249487773512116827667657113488826983019377203340309252099510872045559551137373937325447429868374589521025053510239282106081163136832224246458779559759558373217250858660047257353245823261531401744549892306453820531695020998680690958073028841354348536865781772305543438754053015770323099185706446441666603747389239938097575151185364684441585874525071636770258542349489265858772362316496440677775731726379341649443606870446049613431463842139155717712075683837006161101837841578652633446715854122799145591772417956444791396928022576214067381677702738954768960851229529533511975247574089188689995389417019807413139692910072698555700059983250689413419637131090024392474447894106812168336764880767084946057906002241591741598461457549990128368226663606985971290455997273202401924270593570485441285973258452624585311481046537643750900668689225577788158229821349917707601260273910477451314295521607572807141522450541704779844827335255929420213962845246185</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">exp_def</span>(<span class="hljs-params">e1,e2,c1,c2,n</span>):<br>    s,s1,s2 = gmpy2.gcdext(e1, e2)<br>    m = (<span class="hljs-built_in">pow</span>(c1,s1,n) * <span class="hljs-built_in">pow</span>(c2 ,s2 ,n)) % n<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">int</span>(m)<br><br>m=exp_def(e1,e2,c1,c2,n)<br><br><span class="hljs-built_in">print</span>(libnum.n2s(m))<br><br></code></pre></td></tr></table></figure>
+
+<p>运行后得到flag:qfnuctf{th1s_1s_baby_nn}</p>
+<img src="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E5%8F%96%E8%AF%81" srcset="/img/loading.gif" lazyload class="" title="image-20240316203511577">
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF-Crypto/" class="print-no-link">#CTF-Crypto</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>曲star网络安全技能竞赛官方题解（取证#密码方向）</div>
+      <div>https://erkangkang.github.io/2024/03/16/曲star网络安全技能竞赛官方题解（取证#密码方向）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>尔康康康康</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/02/08/24_0208%E5%87%A0%E4%B8%AA%E5%8F%96%E8%AF%81%E9%A2%98%E7%9B%AE/" title="2024西湖论剑取证题目easy_rawraw">
+                        <span class="hidden-mobile">2024西湖论剑取证题目easy_rawraw</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

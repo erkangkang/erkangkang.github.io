@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>玄机_第二章日志分析-apache日志分析wp</title>
+    <link href="/2024/03/21/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90-apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/"/>
+    <url>/2024/03/21/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90-apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/</url>
+    
+    <content type="html"><![CDATA[<h1 id="玄机-第二章日志分析-apache日志分析"><a href="#玄机-第二章日志分析-apache日志分析" class="headerlink" title="玄机_第二章日志分析-apache日志分析"></a>玄机_第二章日志分析-apache日志分析</h1><p>玄机的题目用来练习应急响应是相当不错的，今天也跟平台负责人聊了下，后续可能会出病毒样本分析，值得期待。</p><p>平台地址：<a href="https://xj.edisec.net/">https://xj.edisec.net/</a></p><img src="/2024/03/21/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90-apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/Untitled.png" class="" title="Untitled"><p><strong><code>题目一：提交当天访问次数最多的IP，即黑客IP</code></strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cut</span> -d- -f 1 access.log.1|<span class="hljs-built_in">uniq</span> -c | <span class="hljs-built_in">sort</span> -rn | <span class="hljs-built_in">head</span> -20<br></code></pre></td></tr></table></figure><img src="/2024/03/21/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90-apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/Untitled%201.png" class="" title="Untitled"><p>flag{192.168.200.2}</p><p><strong><code>题目二：黑客使用的浏览器指纹是什么，提交指纹的md5</code></strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> access.log.1 |grep <span class="hljs-string">&quot;192.168.200.2&quot;</span><br></code></pre></td></tr></table></figure><img src="/2024/03/21/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90-apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/Untitled%202.png" class="" title="Untitled"><p>得到浏览器指纹如下：<code>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36</code></p><p>md5后得到flag{2d6330f380f44ac20f3a02eed0958f66}</p><p><strong><code>题目三：查看index.php页面被访问的次数，提交次数</code></strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&quot;/index.php&quot;</span> access.log.1 |<span class="hljs-built_in">wc</span> -l<br></code></pre></td></tr></table></figure><img src="/2024/03/21/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90-apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/Untitled%203.png" class="" title="Untitled"><p>flag{27}</p><p><strong><code>题目四：查看黑客IP访问了多少次，提交次数</code></strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;&#123;++S[$1]&#125; END &#123;for (a in S) print a,S[a]&#125;&#x27;</span> access.log.1<br></code></pre></td></tr></table></figure><img src="/2024/03/21/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90-apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/Untitled%204.png" class="" title="Untitled"><p>flag{6555}</p><p><strong><code>题目五：查看2023年8月03日8时这一个小时内有多少IP访问，提交次数</code></strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> access.log.1 | grep <span class="hljs-string">&quot;03/Aug/2023:08:&quot;</span> | awk <span class="hljs-string">&#x27;&#123;print $1&#125;&#x27;</span> | <span class="hljs-built_in">sort</span> -nr| <span class="hljs-built_in">uniq</span> -c<br></code></pre></td></tr></table></figure><img src="/2024/03/21/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90-apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/Untitled%205.png" class="" title="Untitled"><p>flag{5}</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>应急响应</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>应急响应</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>曲star网络安全技能竞赛官方题解(密码#取证部分)</title>
     <link href="/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3/"/>
     <url>/2024/03/16/%E6%9B%B2star%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3/</url>
@@ -204,31 +229,6 @@
   
   
   <entry>
-    <title>2023强网杯-谍影重重2.0</title>
-    <link href="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/"/>
-    <url>/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/</url>
-    
-    <content type="html"><![CDATA[<h1 id="谍影重重2-0"><a href="#谍影重重2-0" class="headerlink" title="谍影重重2.0"></a>谍影重重2.0</h1><p>看一眼题目，附件下载下来是一个流量包</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled.png" class="" title="Untitled"><p>要找出流量包中设计ICAO CODE的数据，查了查ICAO CODE的相关信息，应该是个24位地址</p><p>可以找到相关的格式以及样例</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%201.png" class="" title="Untitled 1"><p>打开流量包，都是tcp，考虑信息在tcp payload中</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%203.png" class="" title="Untitled 3"><p>将流量包中所有的tcp payload都导出</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%204.png" class="" title="Untitled 4"><p>搜索获得了可用信息的格式，以及如何解码（可见：<a href="https://mode-s.org/decode/content/ads-b/1-basics.html">https://mode-s.org/decode/content/ads-b/1-basics.html</a>）</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%205.png" class="" title="Untitled 5"><p>将有效信息进行提取和排序</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%206.png" class="" title="Untitled 6"><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%207.png" class="" title="Untitled 7"><p>将提取后的信息解码后进行速度比较可以得到答案</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%208.png" class="" title="Untitled 8"><p>最快的ICAD为79a05e，md5后就是flag了</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>CTF</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>CTF-Misc</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>2023强网杯-speedup</title>
     <link href="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-speedup/"/>
     <url>/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-speedup/</url>
@@ -246,6 +246,31 @@
     <tags>
       
       <tag>CTF-Crypto</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2023强网杯-谍影重重2.0</title>
+    <link href="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/"/>
+    <url>/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="谍影重重2-0"><a href="#谍影重重2-0" class="headerlink" title="谍影重重2.0"></a>谍影重重2.0</h1><p>看一眼题目，附件下载下来是一个流量包</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled.png" class="" title="Untitled"><p>要找出流量包中设计ICAO CODE的数据，查了查ICAO CODE的相关信息，应该是个24位地址</p><p>可以找到相关的格式以及样例</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%201.png" class="" title="Untitled 1"><p>打开流量包，都是tcp，考虑信息在tcp payload中</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%203.png" class="" title="Untitled 3"><p>将流量包中所有的tcp payload都导出</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%204.png" class="" title="Untitled 4"><p>搜索获得了可用信息的格式，以及如何解码（可见：<a href="https://mode-s.org/decode/content/ads-b/1-basics.html">https://mode-s.org/decode/content/ads-b/1-basics.html</a>）</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%205.png" class="" title="Untitled 5"><p>将有效信息进行提取和排序</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%206.png" class="" title="Untitled 6"><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%207.png" class="" title="Untitled 7"><p>将提取后的信息解码后进行速度比较可以得到答案</p><img src="/2023/12/23/2023%E5%BC%BA%E7%BD%91%E6%9D%AF-%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D2.0/Untitled%208.png" class="" title="Untitled 8"><p>最快的ICAD为79a05e，md5后就是flag了</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF-Misc</tag>
       
     </tags>
     

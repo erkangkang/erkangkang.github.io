@@ -16,36 +16,36 @@
   <meta name="author" content="尔康康康康">
   <meta name="keywords" content="">
   
-    <meta name="description" content="jadx+Cherry Studio实现自动化安卓逆向1.配置jadx首先需要下载jadx,可以直接从github中下载最新版本的jadx:https:&#x2F;&#x2F;github.com&#x2F;skylot&#x2F;jadx 作者这里使用的是1.5.3版本的jadx  jadx下载安装完毕后需要进行配置jadx-ai-mcp，可从https:&#x2F;&#x2F;github.com&#x2F;zinja-coder&#x2F;jadx-ai-mcp&#x2F;中获取">
+    <meta name="description" content="jadx+Cherry Studio实现自动化安卓逆向1.配置jadx首先需要下载jadx,可以直接从github中下载最新版本的jadx:https:&#x2F;&#x2F;github.com&#x2F;skylot&#x2F;jadx 作者这里使用的是1.5.3版本的jadx   jadx下载安装完毕后需要进行配置jadx-ai-mcp，可从https:&#x2F;&#x2F;github.com&#x2F;zinja-coder&#x2F;jadx-ai-mcp&#x2F;中获">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jadx+Cherry Studio实现自动化安卓逆向">
-<meta property="og:url" content="https://erkangkang.github.io/2025/09/21/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/index.html">
+<meta property="og:url" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/index.html">
 <meta property="og:site_name" content="尔康康康康">
-<meta property="og:description" content="jadx+Cherry Studio实现自动化安卓逆向1.配置jadx首先需要下载jadx,可以直接从github中下载最新版本的jadx:https:&#x2F;&#x2F;github.com&#x2F;skylot&#x2F;jadx 作者这里使用的是1.5.3版本的jadx  jadx下载安装完毕后需要进行配置jadx-ai-mcp，可从https:&#x2F;&#x2F;github.com&#x2F;zinja-coder&#x2F;jadx-ai-mcp&#x2F;中获取">
+<meta property="og:description" content="jadx+Cherry Studio实现自动化安卓逆向1.配置jadx首先需要下载jadx,可以直接从github中下载最新版本的jadx:https:&#x2F;&#x2F;github.com&#x2F;skylot&#x2F;jadx 作者这里使用的是1.5.3版本的jadx   jadx下载安装完毕后需要进行配置jadx-ai-mcp，可从https:&#x2F;&#x2F;github.com&#x2F;zinja-coder&#x2F;jadx-ai-mcp&#x2F;中获">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921191736262.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192050514.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192208559.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192234297.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192322173.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192344797.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192421984.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192638230.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921193153078.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921193244432.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921194440356.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921200323210.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921200436088.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921200606259.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921200714992.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921201018467.png">
-<meta property="og:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921201935084.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921191736262.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192050514.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192208559.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192234297.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192322173.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192344797.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192421984.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192638230.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921193153078.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921193244432.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921194440356.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921200323210.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921200436088.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921200606259.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921200714992.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921201018467.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921201935084.png">
 <meta property="article:published_time" content="2025-09-21T02:20:10.000Z">
-<meta property="article:modified_time" content="2025-09-21T12:30:34.959Z">
+<meta property="article:modified_time" content="2025-09-21T12:36:32.447Z">
 <meta property="article:author" content="尔康康康康">
 <meta property="article:tag" content="逆向">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://erkangkang.github.io/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921191736262.png">
+<meta name="twitter:image" content="https://erkangkang.github.io/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921191736262.png">
   
   
   
@@ -322,46 +322,63 @@
                 
                 <h1 id="jadx-Cherry-Studio实现自动化安卓逆向"><a href="#jadx-Cherry-Studio实现自动化安卓逆向" class="headerlink" title="jadx+Cherry Studio实现自动化安卓逆向"></a>jadx+Cherry Studio实现自动化安卓逆向</h1><h2 id="1-配置jadx"><a href="#1-配置jadx" class="headerlink" title="1.配置jadx"></a>1.配置jadx</h2><p>首先需要下载jadx,可以直接从github中下载最新版本的jadx:<a target="_blank" rel="noopener" href="https://github.com/skylot/jadx">https://github.com/skylot/jadx</a></p>
 <p>作者这里使用的是1.5.3版本的jadx</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921191736262.png" srcset="/img/loading.gif" lazyload alt="image-20250921191736262"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921191736262.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921191736262">
+
 <p>jadx下载安装完毕后需要进行配置jadx-ai-mcp，可从<a target="_blank" rel="noopener" href="https://github.com/zinja-coder/jadx-ai-mcp/%E4%B8%AD%E8%8E%B7%E5%8F%96%EF%BC%8C%E8%BF%99%E4%B8%A4%E4%B8%AA%E9%83%BD%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E4%B8%8B%E8%BD%BD">https://github.com/zinja-coder/jadx-ai-mcp/中获取，这两个都需要进行下载</a></p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192050514.png" srcset="/img/loading.gif" lazyload alt="image-20250921192050514"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192050514.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921192050514">
+
 <p>下载完成后，打开jadx,点击首选项</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192208559.png" srcset="/img/loading.gif" lazyload alt="image-20250921192208559"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192208559.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921192208559">
+
 <p>点击安装插件</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192234297.png" srcset="/img/loading.gif" lazyload alt="image-20250921192234297"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192234297.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921192234297">
+
 <p>选择我们刚才下载的插件jar</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192322173.png" srcset="/img/loading.gif" lazyload alt="image-20250921192322173"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192322173.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921192322173">
+
 <p>点击安装</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192344797.png" srcset="/img/loading.gif" lazyload alt="image-20250921192344797"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192344797.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921192344797">
+
 <p>此时已经安装成功</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192421984.png" srcset="/img/loading.gif" lazyload alt="image-20250921192421984"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192421984.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921192421984">
+
 <p>在下载的jadx-mcp-server文件夹中执行,下载uv</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">pip install uv<br></code></pre></td></tr></table></figure>
 
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921192638230.png" srcset="/img/loading.gif" lazyload alt="image-20250921192638230"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921192638230.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921192638230">
+
 <p>使用uv在当前目录下创建虚拟环境并激活</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">uv venv<br>.venv\Scripts\activate<br></code></pre></td></tr></table></figure>
 
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921193153078.png" srcset="/img/loading.gif" lazyload alt="image-20250921193153078"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921193153078.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921193153078">
+
 <p>安装”httpx” 和 “fastmcp”两个库</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">uv pip <span class="hljs-keyword">install</span> httpx fastmcp<br></code></pre></td></tr></table></figure>
 
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921193244432.png" srcset="/img/loading.gif" lazyload alt="image-20250921193244432"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921193244432.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921193244432">
+
 <h2 id="2-配置Cherry-Studio"><a href="#2-配置Cherry-Studio" class="headerlink" title="2.配置Cherry Studio"></a>2.配置Cherry Studio</h2><p>Cherry Studio可以从其官网下载<a target="_blank" rel="noopener" href="https://www.cherry-ai.com/%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AE%E5%A5%BD%E4%BA%86%E4%B9%8B%E5%90%8E%E9%85%8D%E7%BD%AEmcp">https://www.cherry-ai.com/，下载配置好了之后配置mcp</a></p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921194440356.png" srcset="/img/loading.gif" lazyload alt="image-20250921194440356"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921194440356.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921194440356">
+
 <p>这里选择快速创建，路径改成自己对应的即可</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921200323210.png" srcset="/img/loading.gif" lazyload alt="image-20250921200323210"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921200323210.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921200323210">
+
 <p>Type (类型): 选择 STDIO。- Command (命令): 填写 uv。- Arguments (参数): 按照顺序填写下面的参数，每个参数一个字段：- –directory- E:\tools\jadx-gui-1.5.3-with-jre-win\jadx-mcp-server-v3.3.1\jadx-mcp-server- run- jadx_mcp_server.py填写完成后，保存配置即可。这样，Cherry Studio 就能使用你指定的 uv 命令和参数来启动 jadx-mcp-server 了。</p>
 <p>这样就是配置完成了</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921200436088.png" srcset="/img/loading.gif" lazyload alt="image-20250921200436088"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921200436088.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921200436088">
+
 <p>接下来我们用一个apk进行测试，首先用jadx打开apk</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921200606259.png" srcset="/img/loading.gif" lazyload alt="image-20250921200606259"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921200606259.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921200606259">
+
 <p>在cherry studio中选择我们配置好的mcp</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921200714992.png" srcset="/img/loading.gif" lazyload alt="image-20250921200714992"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921200714992.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921200714992">
+
 <p>可以看到AI已经成功调用jadx进行逆向分析</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921201018467.png" srcset="/img/loading.gif" lazyload alt="image-20250921201018467"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921201018467.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921201018467">
+
 <p>可以看到分析结果</p>
-<p><img src="/jadx+cherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%5Cimage-20250921201935084.png" srcset="/img/loading.gif" lazyload alt="image-20250921201935084"></p>
+<img src="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/image-20250921201935084.png" srcset="/img/loading.gif" lazyload class="" title="image-20250921201935084">
+
 <p>作者这里仅做了cherry studio中配置的演示，cursor中其实也是类似的，大家可以根据自己实际情况进行配置，提高逆向分析效率。</p>
 
                 
@@ -409,7 +426,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>jadx+Cherry Studio实现自动化安卓逆向</div>
-      <div>https://erkangkang.github.io/2025/09/21/jadx+cherrystudio实现自动化安卓逆向/</div>
+      <div>https://erkangkang.github.io/2025/09/21/jadxcherrystudio实现自动化安卓逆向/</div>
     </div>
     <div class="license-meta">
       

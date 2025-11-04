@@ -1,0 +1,838 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/red.jpg">
+  <link rel="icon" href="/img/red.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="尔康康康康">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第九届“强网杯”行业领域专项赛车联网安全赛-初赛（CTF）WP第九届“强网杯”行业领域专项赛车联网安全赛是由中央网信办、河南省人民政府指导，河南省委网信办、河南省教育厅、郑州市人民政府、信息工程大学、郑州大学、中国网络空间安全协会等单位联合主办的车联网安全专项赛事。车联网安全赛道线上CTF初赛旨在通过CTF解题，全面检验选手在智能网联汽车安全领域的实践能力。 强网-stop  通过分析给出的代码，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第九届“强网杯”行业领域专项赛车联网安全赛-初赛（CTF）WP">
+<meta property="og:url" content="https://erkangkang.github.io/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/index.html">
+<meta property="og:site_name" content="尔康康康康">
+<meta property="og:description" content="第九届“强网杯”行业领域专项赛车联网安全赛-初赛（CTF）WP第九届“强网杯”行业领域专项赛车联网安全赛是由中央网信办、河南省人民政府指导，河南省委网信办、河南省教育厅、郑州市人民政府、信息工程大学、郑州大学、中国网络空间安全协会等单位联合主办的车联网安全专项赛事。车联网安全赛道线上CTF初赛旨在通过CTF解题，全面检验选手在智能网联汽车安全领域的实践能力。 强网-stop  通过分析给出的代码，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://erkangkang.github.io/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/45a8b2a9417bf447eb43503b529ea0d4.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/image-20251102111959460.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/image-20251104100213858.png">
+<meta property="og:image" content="https://erkangkang.github.io/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/wps1.jpg">
+<meta property="og:image" content="https://erkangkang.github.io/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/wps2.jpg">
+<meta property="article:published_time" content="2025-11-15T07:50:10.000Z">
+<meta property="article:modified_time" content="2025-11-04T02:24:58.536Z">
+<meta property="article:author" content="尔康康康康">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://erkangkang.github.io/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/45a8b2a9417bf447eb43503b529ea0d4.png">
+  
+  
+  
+  <title>第九届“强网杯”行业领域专项赛车联网安全赛-初赛（CTF）WP - 尔康康康康</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erkangkang.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":null,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"pgXLabB07JIbb2xkpF8QuTDd-gzGzoHsz","app_key":"NdAK7NEnw4oYGFA92BPO0cMN","pv_format":"总访问量 {} 次","uv_format":"总访客数 {} 人","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>尔康康康康</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第九届“强网杯”行业领域专项赛车联网安全赛-初赛（CTF）WP"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-11-15 15:50" pubdate>
+          2025年11月15日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">第九届“强网杯”行业领域专项赛车联网安全赛-初赛（CTF）WP</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="第九届“强网杯”行业领域专项赛车联网安全赛-初赛（CTF）WP"><a href="#第九届“强网杯”行业领域专项赛车联网安全赛-初赛（CTF）WP" class="headerlink" title="第九届“强网杯”行业领域专项赛车联网安全赛-初赛（CTF）WP"></a>第九届“强网杯”行业领域专项赛车联网安全赛-初赛（CTF）WP</h1><p>第九届“强网杯”行业领域专项赛车联网安全赛是由中央网信办、河南省人民政府指导，河南省委网信办、河南省教育厅、郑州市人民政府、信息工程大学、郑州大学、中国网络空间安全协会等单位联合主办的车联网安全专项赛事。车联网安全赛道线上CTF初赛旨在通过CTF解题，全面检验选手在智能网联汽车安全领域的实践能力。</p>
+<h2 id="强网-stop"><a href="#强网-stop" class="headerlink" title="强网-stop"></a>强网-stop</h2><img src="/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/45a8b2a9417bf447eb43503b529ea0d4.png" srcset="/img/loading.gif" lazyload class="" title="45a8b2a9417bf447eb43503b529ea0d4">
+
+<p>通过分析给出的代码，可以得到攻击本质是降低 stop sign 的 logits，那我们做防御策略就是增加 stop sign 的 logits（偏置+权重），即使被攻击降低，增加后的 logits 仍然足够高</p>
+<p><strong>策略1：增加偏置（Bias）</strong></p>
+<p>在分类层的输出层，直接增加 stop sign 类别的偏置：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">bias[stop_sign_id] += <span class="hljs-number">2.5</span><br></code></pre></td></tr></table></figure>
+
+<p>原理：</p>
+<ul>
+<li>分类输出：<code>output = conv(features) + bias</code></li>
+<li>增加偏置 → 直接增加 logits → 提高 softmax 后的概率</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>简单直接，效果明显</li>
+<li>不改变特征提取过程，对 other 类别影响小</li>
+</ul>
+<p><strong>策略2：增加权重（Weight）</strong></p>
+<p>同时增加 stop sign 对应通道的权重：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">weight[stop_sign_id, :, :, :] += <span class="hljs-number">0.1</span> * weight[stop_sign_id, :, :, :]<br></code></pre></td></tr></table></figure>
+
+<p>原理：</p>
+<ul>
+<li>增强 stop sign 特征在分类时的响应强度</li>
+<li>使模型对 stop sign 相关特征更敏感</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>与偏置结合，双重保障</li>
+<li>权重调整幅度小（10%），避免过度微调</li>
+</ul>
+<p><strong>微调策略：</strong></p>
+<ul>
+<li><p>只修改分类输出层，不影响特征提取</p>
+</li>
+<li><p>同时修改 3 个检测头，覆盖多尺度</p>
+</li>
+<li><p>调整幅度适中，既防御攻击又尽可能保持对其他类别的识别</p>
+</li>
+</ul>
+<p>所用脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> ultralytics <span class="hljs-keyword">import</span> YOLO<br><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><span class="hljs-keyword">import</span> re<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">modify_model_for_defense</span>(<span class="hljs-params">model_path, output_path</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    微调模型以防御对抗样本攻击</span><br><span class="hljs-string">    策略：修改Detect层的分类卷积层，增加 stop sign 类别的偏置</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 加载原始模型</span><br>    model = YOLO(model_path)<br>    yolo_model = model.model<br>    <br>    <span class="hljs-comment"># 找到 stop sign 的类别ID</span><br>    stop_sign_id = <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> model.names.items():<br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;stop&quot;</span> <span class="hljs-keyword">in</span> v.lower():<br>            stop_sign_id = k<br>            <span class="hljs-keyword">break</span><br>    <br>    <span class="hljs-keyword">if</span> stop_sign_id <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Error: Could not find stop sign class&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Stop sign class ID: <span class="hljs-subst">&#123;stop_sign_id&#125;</span>&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total classes: <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(model.names)&#125;</span>&quot;</span>)<br>    <br>    <span class="hljs-comment"># 找到Detect层</span><br>    detect_layer = <span class="hljs-literal">None</span><br>    detect_layer_name = <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">for</span> name, module <span class="hljs-keyword">in</span> yolo_model.named_modules():<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(module, nn.Module) <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;Detect&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">type</span>(module).__name__:<br>            detect_layer = module<br>            detect_layer_name = name<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Found Detect layer: <span class="hljs-subst">&#123;name&#125;</span>, type: <span class="hljs-subst">&#123;<span class="hljs-built_in">type</span>(module)&#125;</span>&quot;</span>)<br>            <span class="hljs-keyword">break</span><br>    <br>    <span class="hljs-keyword">if</span> detect_layer <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-comment"># 尝试直接访问最后一个模块</span><br>        detect_layer = yolo_model.model[-<span class="hljs-number">1</span>]<br>        detect_layer_name = <span class="hljs-string">&quot;model[-1]&quot;</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Using model[-1] as Detect layer, type: <span class="hljs-subst">&#123;<span class="hljs-built_in">type</span>(detect_layer)&#125;</span>&quot;</span>)<br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Detect layer attributes: <span class="hljs-subst">&#123;<span class="hljs-built_in">dir</span>(detect_layer)&#125;</span>&quot;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(detect_layer, <span class="hljs-string">&#x27;cv3&#x27;</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;cv3 type: <span class="hljs-subst">&#123;<span class="hljs-built_in">type</span>(detect_layer.cv3)&#125;</span>&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;cv3 not found in detect_layer&quot;</span>)<br>    <br>    modified = <span class="hljs-literal">False</span><br>    <br>    <span class="hljs-comment"># 修改cv3（分类层）</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(detect_layer, <span class="hljs-string">&#x27;cv3&#x27;</span>):<br>        cv3_modules = detect_layer.cv3<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Found cv3: <span class="hljs-subst">&#123;<span class="hljs-built_in">type</span>(cv3_modules)&#125;</span>, length: <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(cv3_modules)&#125;</span>&quot;</span>)<br>        <br>        <span class="hljs-comment"># cv3是一个ModuleList，包含多个Sequential（对应多个检测头/尺度）</span><br>        <span class="hljs-keyword">for</span> i, seq <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(cv3_modules):<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(seq, nn.Sequential):<br>                <span class="hljs-comment"># 找到最后一个Conv2d层（分类输出层）</span><br>                last_conv = <span class="hljs-literal">None</span><br>                <span class="hljs-keyword">for</span> j, layer <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(seq):<br>                    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(layer, nn.Conv2d):<br>                        last_conv = layer<br>                        out_channels = layer.out_channels<br>                        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;cv3[<span class="hljs-subst">&#123;i&#125;</span>][<span class="hljs-subst">&#123;j&#125;</span>]: Conv2d, out_channels=<span class="hljs-subst">&#123;out_channels&#125;</span>&quot;</span>)<br>                <br>                <span class="hljs-comment"># 修改最后一个Conv2d层</span><br>                <span class="hljs-keyword">if</span> last_conv <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>                    out_channels = last_conv.out_channels<br>                    <br>                    <span class="hljs-comment"># 在YOLOv8中，cv3输出80个通道，对应80个类别</span><br>                    <span class="hljs-keyword">if</span> out_channels == <span class="hljs-built_in">len</span>(model.names):<br>                        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Modifying classification layer cv3[<span class="hljs-subst">&#123;i&#125;</span>] (detection head <span class="hljs-subst">&#123;i&#125;</span>)&quot;</span>)<br>                        <span class="hljs-comment"># 增加stop_sign对应通道的权重</span><br>                        weight = last_conv.weight.data<br>                        <br>                        <span class="hljs-comment"># 增加stop_sign类别的权重（使该类别更容易被激活）</span><br>                        weight[stop_sign_id, :, :, :] += <span class="hljs-number">0.1</span> * weight[stop_sign_id, :, :, :]<br>                        <br>                        <span class="hljs-comment"># 增加偏置（直接增加logits）</span><br>                        <span class="hljs-keyword">if</span> last_conv.bias <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>                            last_conv.bias.data[stop_sign_id] += <span class="hljs-number">2.5</span><br>                        <span class="hljs-keyword">else</span>:<br>                            <span class="hljs-comment"># 如果没有bias，创建一个</span><br>                            bias = torch.zeros(out_channels, device=weight.device)<br>                            bias[stop_sign_id] = <span class="hljs-number">2.5</span><br>                            last_conv.bias = nn.Parameter(bias)<br>                            last_conv.bias.requires_grad = <span class="hljs-literal">False</span><br>                        <br>                        modified = <span class="hljs-literal">True</span><br>                        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Modified cv3[<span class="hljs-subst">&#123;i&#125;</span>]: increased weight and bias for stop_sign (class <span class="hljs-subst">&#123;stop_sign_id&#125;</span>)&quot;</span>)<br>                        <br>                    <span class="hljs-comment"># 如果输出通道更多，可能是包含了box+obj+cls</span><br>                    <span class="hljs-keyword">elif</span> out_channels &gt;= <span class="hljs-built_in">len</span>(model.names):<br>                        <span class="hljs-comment"># 假设类别在最后nc个通道中</span><br>                        cls_start = out_channels - <span class="hljs-built_in">len</span>(model.names)<br>                        stop_channel = cls_start + stop_sign_id<br>                        <br>                        <span class="hljs-keyword">if</span> stop_channel &lt; out_channels:<br>                            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Modifying classification layer cv3[<span class="hljs-subst">&#123;i&#125;</span>], channel <span class="hljs-subst">&#123;stop_channel&#125;</span> (class <span class="hljs-subst">&#123;stop_sign_id&#125;</span>)&quot;</span>)<br>                            <br>                            weight = last_conv.weight.data<br>                            <span class="hljs-comment"># 增加stop_sign通道的权重</span><br>                            weight[stop_channel, :, :, :] += <span class="hljs-number">0.08</span> * weight[stop_channel, :, :, :]<br>                            <br>                            <span class="hljs-comment"># 增加偏置</span><br>                            <span class="hljs-keyword">if</span> last_conv.bias <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>                                last_conv.bias.data[stop_channel] += <span class="hljs-number">2.5</span><br>                            <span class="hljs-keyword">else</span>:<br>                                bias = torch.zeros(out_channels, device=weight.device)<br>                                bias[stop_channel] = <span class="hljs-number">2.5</span><br>                                last_conv.bias = nn.Parameter(bias)<br>                                last_conv.bias.requires_grad = <span class="hljs-literal">False</span><br>                            <br>                            modified = <span class="hljs-literal">True</span><br>    <br>    <span class="hljs-comment"># 如果还没修改成功，尝试更通用的方法：查找所有输出80通道的Conv2d</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> modified:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Trying alternative approach: searching for classification Conv2d layers&quot;</span>)<br>        <span class="hljs-comment"># 只修改每个检测头的最后一层（.2），避免过度微调</span><br>        <span class="hljs-keyword">for</span> name, module <span class="hljs-keyword">in</span> yolo_model.named_modules():<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(module, nn.Conv2d):<br>                out_channels = module.out_channels<br>                <span class="hljs-comment"># 查找cv3相关的分类层，输出80个通道，并且是最后一层（以.2结尾，而不是.2.conv）</span><br>                <span class="hljs-comment"># 匹配 pattern: model.22.cv3.X.2 (X是0,1,2，表示检测头编号)</span><br>                <span class="hljs-keyword">if</span> out_channels == <span class="hljs-built_in">len</span>(model.names) <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;cv3&#x27;</span> <span class="hljs-keyword">in</span> name:<br>                    <span class="hljs-comment"># 检查是否是最后一层：name应该以 .X.2 结尾（X是数字）</span><br>                    <span class="hljs-keyword">if</span> re.search(<span class="hljs-string">r&#x27;\.\d+\.2$&#x27;</span>, name):<br>                        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Found classification output layer: <span class="hljs-subst">&#123;name&#125;</span>, out_channels=<span class="hljs-subst">&#123;out_channels&#125;</span>&quot;</span>)<br>                        <br>                        stop_channel = stop_sign_id<br>                        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Modifying <span class="hljs-subst">&#123;name&#125;</span>, channel <span class="hljs-subst">&#123;stop_channel&#125;</span> (stop_sign)&quot;</span>)<br>                        <br>                        weight = module.weight.data<br>                        <span class="hljs-comment"># 增加权重（幅度适中，既能防御攻击又不过度微调）</span><br>                        weight[stop_channel, :, :, :] += <span class="hljs-number">0.1</span> * weight[stop_channel, :, :, :]<br>                        <br>                        <span class="hljs-keyword">if</span> module.bias <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>                            module.bias.data[stop_channel] += <span class="hljs-number">2.5</span><br>                        <span class="hljs-keyword">else</span>:<br>                            bias = torch.zeros(out_channels, device=weight.device)<br>                            bias[stop_channel] = <span class="hljs-number">2.5</span><br>                            module.bias = nn.Parameter(bias)<br>                            module.bias.requires_grad = <span class="hljs-literal">False</span><br>                        <br>                        modified = <span class="hljs-literal">True</span><br>    <br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> modified:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Error: Could not find classification layer to modify&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <br>    <span class="hljs-comment"># 保存修改后的模型</span><br>    <span class="hljs-comment"># 使用torch.save保存模型权重，然后重新加载</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-comment"># 方法1: 直接保存YOLO模型</span><br>        model.save(output_path)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Model saved to <span class="hljs-subst">&#123;output_path&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Error saving model: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br>        <span class="hljs-comment"># 方法2: 手动保存权重</span><br>        <span class="hljs-keyword">try</span>:<br>            torch.save(yolo_model.state_dict(), output_path.replace(<span class="hljs-string">&#x27;.pt&#x27;</span>, <span class="hljs-string">&#x27;_weights.pt&#x27;</span>))<br>            <span class="hljs-comment"># 然后需要重新构建模型，但YOLO的保存格式特殊</span><br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Warning: Using alternative save method&quot;</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <span class="hljs-keyword">except</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    <span class="hljs-comment"># 微调模型</span><br>    success = modify_model_for_defense(<span class="hljs-string">&quot;best.pt&quot;</span>, <span class="hljs-string">&quot;defended.pt&quot;</span>)<br>    <span class="hljs-keyword">if</span> success:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Model fine-tuning completed successfully!&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Please upload &#x27;defended.pt&#x27; to test.&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Model fine-tuning failed!&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>运行后将生成的pt文件上传后得到flag</p>
+<img src="/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/image-20251102111959460.png" srcset="/img/loading.gif" lazyload class="" title="image-20251102111959460">
+
+<h2 id="强网-SCAAES"><a href="#强网-SCAAES" class="headerlink" title="强网-SCAAES"></a>强网-SCAAES</h2><p>题干如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">安全研究人员在进行某品牌汽车硬件安全测试时，发现其中某核心零部件内用于实现AES密码算法的芯片存在侧信道信息泄露。研究人员对该芯片执行密码运算过程中的功耗信息进行了采集，并确认可以利用该数据集进行侧信道攻击取得算法密钥，请尝试利用技术手段复现研究人员获取到的密钥信息，该密钥即为题解。<br></code></pre></td></tr></table></figure>
+
+<p>题目给了一个trs文件，我们可以用python的<code>trsfile</code> 库直接读取</p>
+<img src="/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/image-20251104100213858.png" srcset="/img/loading.gif" lazyload class="" title="image-20251104100213858">
+
+<p>大概思路如下：</p>
+<ol>
+<li><strong>泄露模型</strong>（Leakage Model）：采用<strong>汉明重量</strong>（Hamming Weight, HW）。  <ul>
+<li>针对 AES 第 1 轮 SBox 的<strong>中间值</strong>建立选择函数：<br>[ v_i(k) &#x3D; S\big(p_i \oplus k\big) \quad\Rightarrow\quad L_i(k) &#x3D; HW\big(v_i(k)\big) ]<br>其中 (p_i) 为第 (i) 条轨迹的第 (b) 个明文字节，(k) 为猜测的密钥字节。</li>
+</ul>
+</li>
+<li><strong>统计量</strong>：对每个时间采样点 <code>t</code>，计算 <code>L(k)</code> 与功耗 <code>T[:, t]</code> 的皮尔逊相关系数，取全时域的最大绝对相关值作为该 <code>k</code> 的评分：<br>[ \rho(k) &#x3D; \max_t \big|\mathrm{corr}(L(k), T[:, t])\big| ]</li>
+<li><strong>取最优猜测</strong>：对每个字节 <code>b</code>，取使得 (\rho(k)) 最大的 <code>k*</code> 作为该字节的估计。16 个字节拼接即为 128-bit 密钥。</li>
+<li><strong>大样本收敛</strong>：当轨迹数充足且对齐良好时，正确密钥对应的相关峰显著高于其他假设。</li>
+</ol>
+<p>首先进行数据读取：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># pip install trsfile</span><br><span class="hljs-keyword">import</span> trsfile, numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">with</span> trsfile.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;AES128.trs&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> trs:<br>    n_traces = <span class="hljs-built_in">len</span>(trs)<br>    n_samples = trs.number_of_samples<br>    traces = np.empty((n_traces, n_samples), dtype=np.float32)<br>    pts = np.empty((n_traces, <span class="hljs-number">16</span>), dtype=np.uint8)   <span class="hljs-comment"># 明文（若文件中提供）</span><br><br>    <span class="hljs-keyword">for</span> i, tr <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(trs):<br>        traces[i] = tr.samples<br>        <span class="hljs-comment"># 许多数据集把明文放在 trace.data 或 title/metadata 中</span><br>        <span class="hljs-comment"># 下面视具体字段而定（示例：Inspector 的 &#x27;plaintext&#x27; 键）</span><br>        pts[i] = <span class="hljs-built_in">bytes</span>(tr.data[<span class="hljs-string">&#x27;plaintext&#x27;</span>])<br></code></pre></td></tr></table></figure>
+
+<p>然后进行侧信道攻击，下面给出精炼版 CPA 代码，默认使用 SBox 输出的 HW 泄露模型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> trange<br><br><span class="hljs-comment"># AES S-Box</span><br>SBOX = np.array([<br><span class="hljs-number">0x63</span>,<span class="hljs-number">0x7c</span>,<span class="hljs-number">0x77</span>,<span class="hljs-number">0x7b</span>,<span class="hljs-number">0xf2</span>,<span class="hljs-number">0x6b</span>,<span class="hljs-number">0x6f</span>,<span class="hljs-number">0xc5</span>,<span class="hljs-number">0x30</span>,<span class="hljs-number">0x01</span>,<span class="hljs-number">0x67</span>,<span class="hljs-number">0x2b</span>,<span class="hljs-number">0xfe</span>,<span class="hljs-number">0xd7</span>,<span class="hljs-number">0xab</span>,<span class="hljs-number">0x76</span>,<br><span class="hljs-number">0xca</span>,<span class="hljs-number">0x82</span>,<span class="hljs-number">0xc9</span>,<span class="hljs-number">0x7d</span>,<span class="hljs-number">0xfa</span>,<span class="hljs-number">0x59</span>,<span class="hljs-number">0x47</span>,<span class="hljs-number">0xf0</span>,<span class="hljs-number">0xad</span>,<span class="hljs-number">0xd4</span>,<span class="hljs-number">0xa2</span>,<span class="hljs-number">0xaf</span>,<span class="hljs-number">0x9c</span>,<span class="hljs-number">0xa4</span>,<span class="hljs-number">0x72</span>,<span class="hljs-number">0xc0</span>,<br><span class="hljs-number">0xb7</span>,<span class="hljs-number">0xfd</span>,<span class="hljs-number">0x93</span>,<span class="hljs-number">0x26</span>,<span class="hljs-number">0x36</span>,<span class="hljs-number">0x3f</span>,<span class="hljs-number">0xf7</span>,<span class="hljs-number">0xcc</span>,<span class="hljs-number">0x34</span>,<span class="hljs-number">0xa5</span>,<span class="hljs-number">0xe5</span>,<span class="hljs-number">0xf1</span>,<span class="hljs-number">0x71</span>,<span class="hljs-number">0xd8</span>,<span class="hljs-number">0x31</span>,<span class="hljs-number">0x15</span>,<br><span class="hljs-number">0x04</span>,<span class="hljs-number">0xc7</span>,<span class="hljs-number">0x23</span>,<span class="hljs-number">0xc3</span>,<span class="hljs-number">0x18</span>,<span class="hljs-number">0x96</span>,<span class="hljs-number">0x05</span>,<span class="hljs-number">0x9a</span>,<span class="hljs-number">0x07</span>,<span class="hljs-number">0x12</span>,<span class="hljs-number">0x80</span>,<span class="hljs-number">0xe2</span>,<span class="hljs-number">0xeb</span>,<span class="hljs-number">0x27</span>,<span class="hljs-number">0xb2</span>,<span class="hljs-number">0x75</span>,<br><span class="hljs-number">0x09</span>,<span class="hljs-number">0x83</span>,<span class="hljs-number">0x2c</span>,<span class="hljs-number">0x1a</span>,<span class="hljs-number">0x1b</span>,<span class="hljs-number">0x6e</span>,<span class="hljs-number">0x5a</span>,<span class="hljs-number">0xa0</span>,<span class="hljs-number">0x52</span>,<span class="hljs-number">0x3b</span>,<span class="hljs-number">0xd6</span>,<span class="hljs-number">0xb3</span>,<span class="hljs-number">0x29</span>,<span class="hljs-number">0xe3</span>,<span class="hljs-number">0x2f</span>,<span class="hljs-number">0x84</span>,<br><span class="hljs-number">0x53</span>,<span class="hljs-number">0xd1</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0xed</span>,<span class="hljs-number">0x20</span>,<span class="hljs-number">0xfc</span>,<span class="hljs-number">0xb1</span>,<span class="hljs-number">0x5b</span>,<span class="hljs-number">0x6a</span>,<span class="hljs-number">0xcb</span>,<span class="hljs-number">0xbe</span>,<span class="hljs-number">0x39</span>,<span class="hljs-number">0x4a</span>,<span class="hljs-number">0x4c</span>,<span class="hljs-number">0x58</span>,<span class="hljs-number">0xcf</span>,<br><span class="hljs-number">0xd0</span>,<span class="hljs-number">0xef</span>,<span class="hljs-number">0xaa</span>,<span class="hljs-number">0xfb</span>,<span class="hljs-number">0x43</span>,<span class="hljs-number">0x4d</span>,<span class="hljs-number">0x33</span>,<span class="hljs-number">0x85</span>,<span class="hljs-number">0x45</span>,<span class="hljs-number">0xf9</span>,<span class="hljs-number">0x02</span>,<span class="hljs-number">0x7f</span>,<span class="hljs-number">0x50</span>,<span class="hljs-number">0x3c</span>,<span class="hljs-number">0x9f</span>,<span class="hljs-number">0xa8</span>,<br><span class="hljs-number">0x51</span>,<span class="hljs-number">0xa3</span>,<span class="hljs-number">0x40</span>,<span class="hljs-number">0x8f</span>,<span class="hljs-number">0x92</span>,<span class="hljs-number">0x9d</span>,<span class="hljs-number">0x38</span>,<span class="hljs-number">0xf5</span>,<span class="hljs-number">0xbc</span>,<span class="hljs-number">0xb6</span>,<span class="hljs-number">0xda</span>,<span class="hljs-number">0x21</span>,<span class="hljs-number">0x10</span>,<span class="hljs-number">0xff</span>,<span class="hljs-number">0xf3</span>,<span class="hljs-number">0xd2</span>,<br><span class="hljs-number">0xcd</span>,<span class="hljs-number">0x0c</span>,<span class="hljs-number">0x13</span>,<span class="hljs-number">0xec</span>,<span class="hljs-number">0x5f</span>,<span class="hljs-number">0x97</span>,<span class="hljs-number">0x44</span>,<span class="hljs-number">0x17</span>,<span class="hljs-number">0xc4</span>,<span class="hljs-number">0xa7</span>,<span class="hljs-number">0x7e</span>,<span class="hljs-number">0x3d</span>,<span class="hljs-number">0x64</span>,<span class="hljs-number">0x5d</span>,<span class="hljs-number">0x19</span>,<span class="hljs-number">0x73</span>,<br><span class="hljs-number">0x60</span>,<span class="hljs-number">0x81</span>,<span class="hljs-number">0x4f</span>,<span class="hljs-number">0xdc</span>,<span class="hljs-number">0x22</span>,<span class="hljs-number">0x2a</span>,<span class="hljs-number">0x90</span>,<span class="hljs-number">0x88</span>,<span class="hljs-number">0x46</span>,<span class="hljs-number">0xee</span>,<span class="hljs-number">0xb8</span>,<span class="hljs-number">0x14</span>,<span class="hljs-number">0xde</span>,<span class="hljs-number">0x5e</span>,<span class="hljs-number">0x0b</span>,<span class="hljs-number">0xdb</span>,<br><span class="hljs-number">0xe0</span>,<span class="hljs-number">0x32</span>,<span class="hljs-number">0x3a</span>,<span class="hljs-number">0x0a</span>,<span class="hljs-number">0x49</span>,<span class="hljs-number">0x06</span>,<span class="hljs-number">0x24</span>,<span class="hljs-number">0x5c</span>,<span class="hljs-number">0xc2</span>,<span class="hljs-number">0xd3</span>,<span class="hljs-number">0xac</span>,<span class="hljs-number">0x62</span>,<span class="hljs-number">0x91</span>,<span class="hljs-number">0x95</span>,<span class="hljs-number">0xe4</span>,<span class="hljs-number">0x79</span>,<br><span class="hljs-number">0xe7</span>,<span class="hljs-number">0xc8</span>,<span class="hljs-number">0x37</span>,<span class="hljs-number">0x6d</span>,<span class="hljs-number">0x8d</span>,<span class="hljs-number">0xd5</span>,<span class="hljs-number">0x4e</span>,<span class="hljs-number">0xa9</span>,<span class="hljs-number">0x6c</span>,<span class="hljs-number">0x56</span>,<span class="hljs-number">0xf4</span>,<span class="hljs-number">0xea</span>,<span class="hljs-number">0x65</span>,<span class="hljs-number">0x7a</span>,<span class="hljs-number">0xae</span>,<span class="hljs-number">0x08</span>,<br><span class="hljs-number">0xba</span>,<span class="hljs-number">0x78</span>,<span class="hljs-number">0x25</span>,<span class="hljs-number">0x2e</span>,<span class="hljs-number">0x1c</span>,<span class="hljs-number">0xa6</span>,<span class="hljs-number">0xb4</span>,<span class="hljs-number">0xc6</span>,<span class="hljs-number">0xe8</span>,<span class="hljs-number">0xdd</span>,<span class="hljs-number">0x74</span>,<span class="hljs-number">0x1f</span>,<span class="hljs-number">0x4b</span>,<span class="hljs-number">0xbd</span>,<span class="hljs-number">0x8b</span>,<span class="hljs-number">0x8a</span>,<br><span class="hljs-number">0x70</span>,<span class="hljs-number">0x3e</span>,<span class="hljs-number">0xb5</span>,<span class="hljs-number">0x66</span>,<span class="hljs-number">0x48</span>,<span class="hljs-number">0x03</span>,<span class="hljs-number">0xf6</span>,<span class="hljs-number">0x0e</span>,<span class="hljs-number">0x61</span>,<span class="hljs-number">0x35</span>,<span class="hljs-number">0x57</span>,<span class="hljs-number">0xb9</span>,<span class="hljs-number">0x86</span>,<span class="hljs-number">0xc1</span>,<span class="hljs-number">0x1d</span>,<span class="hljs-number">0x9e</span>,<br><span class="hljs-number">0xe1</span>,<span class="hljs-number">0xf8</span>,<span class="hljs-number">0x98</span>,<span class="hljs-number">0x11</span>,<span class="hljs-number">0x69</span>,<span class="hljs-number">0xd9</span>,<span class="hljs-number">0x8e</span>,<span class="hljs-number">0x94</span>,<span class="hljs-number">0x9b</span>,<span class="hljs-number">0x1e</span>,<span class="hljs-number">0x87</span>,<span class="hljs-number">0xe9</span>,<span class="hljs-number">0xce</span>,<span class="hljs-number">0x55</span>,<span class="hljs-number">0x28</span>,<span class="hljs-number">0xdf</span>,<br><span class="hljs-number">0x8c</span>,<span class="hljs-number">0xa1</span>,<span class="hljs-number">0x89</span>,<span class="hljs-number">0x0d</span>,<span class="hljs-number">0xbf</span>,<span class="hljs-number">0xe6</span>,<span class="hljs-number">0x42</span>,<span class="hljs-number">0x68</span>,<span class="hljs-number">0x41</span>,<span class="hljs-number">0x99</span>,<span class="hljs-number">0x2d</span>,<span class="hljs-number">0x0f</span>,<span class="hljs-number">0xb0</span>,<span class="hljs-number">0x54</span>,<span class="hljs-number">0xbb</span>,<span class="hljs-number">0x16</span><br>], dtype=np.uint8)<br><br>HW = np.array([<span class="hljs-built_in">bin</span>(i).count(<span class="hljs-string">&quot;1&quot;</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>)], dtype=np.uint8)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">cpa_byte</span>(<span class="hljs-params">traces: np.ndarray, pts: np.ndarray, byte_idx: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-comment"># 返回给定字节索引的密钥估计（0..255）</span><br>    x = pts[:, byte_idx]  <span class="hljs-comment"># 明文字节 (N,)</span><br>    N, S = traces.shape<br>    <span class="hljs-comment"># 标准化功耗矩阵（零均值，单位方差），便于快速相关计算</span><br>    T = (traces - traces.mean(axis=<span class="hljs-number">0</span>)) / traces.std(axis=<span class="hljs-number">0</span>, ddof=<span class="hljs-number">1</span>)<br>    best_k, best_r = <span class="hljs-number">0</span>, -<span class="hljs-number">1.0</span><br><br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):<br>        z = HW[SBOX[np.bitwise_xor(x, k)]]          <span class="hljs-comment"># (N,)</span><br>        z = (z - z.mean()) / z.std(ddof=<span class="hljs-number">1</span>)          <span class="hljs-comment"># 标准化</span><br>        <span class="hljs-comment"># 与所有时间点同时计算相关：等价于 (z^T T) / (N-1)</span><br>        r = np.<span class="hljs-built_in">abs</span>(np.dot(z, T) / (<span class="hljs-built_in">len</span>(z) - <span class="hljs-number">1</span>))     <span class="hljs-comment"># (S,)</span><br>        rmax = r.<span class="hljs-built_in">max</span>()<br>        <span class="hljs-keyword">if</span> rmax &gt; best_r:<br>            best_r, best_k = rmax, k<br>    <span class="hljs-keyword">return</span> best_k<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">recover_key</span>(<span class="hljs-params">traces: np.ndarray, pts: np.ndarray</span>) -&gt; <span class="hljs-built_in">bytes</span>:<br>    key_bytes = [cpa_byte(traces, pts, b) <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">16</span>)]<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(key_bytes)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：上面将相关的<strong>所有时间点</strong>向量化一次算完，速度远快于逐点循环。若存在对齐抖动，可在 CPA 前做<strong>滑动窗口&#x2F;降采样&#x2F;高通滤波&#x2F;动态时间规整</strong>等预处理。</p>
+</blockquote>
+<p>在本题数据集上，使用上述流程复现得到的 16 字节密钥为：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">CC</span> AE EE D6 <span class="hljs-number">67</span> CD <span class="hljs-number">6</span>C <span class="hljs-number">04</span> C7 AB CC C2 <span class="hljs-number">6</span>D C7 <span class="hljs-number">93</span> F1<br></code></pre></td></tr></table></figure>
+
+<p>拼接为 32 位十六进制（大写）：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">CCAEEED667CD6C04C7ABCCC26DC793F1<br></code></pre></td></tr></table></figure>
+
+<p>按题目格式输出即：flag{CCAEEED667CD6C04C7ABCCC26DC793F1}</p>
+<h2 id="强网-cancanneedflag"><a href="#强网-cancanneedflag" class="headerlink" title="强网-cancanneedflag"></a>强网-cancanneedflag</h2><p>题目提供了以下附件：</p>
+<ul>
+<li><code>canlog.txt</code> - CAN总线日志文件（100306行）</li>
+<li><code>signal_map/signal_map.csv</code> - 信号映射配置文件</li>
+</ul>
+<p><strong>signal_map.csv 结构:</strong></p>
+<p>该文件定义了信号到CAN消息的映射关系，包含以下字段：</p>
+<ul>
+<li><code>signal</code>: 信号名称（如speed, rpm, steer_angle, sig_1到sig_72等）</li>
+<li><code>can_id</code>: CAN消息ID（16进制）</li>
+<li><code>byte</code>: 数据在CAN消息中的字节位置</li>
+<li><code>len</code>: 数据长度（字节数）</li>
+<li><code>type</code>: 数据类型（uint8, uint16, int16等）</li>
+</ul>
+<p>共有75个信号定义，其中sig_1到sig_72这72个信号很可能用于隐藏flag数据。</p>
+<p><strong>canlog.txt 格式:</strong></p>
+<p>CAN日志格式为：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">(时间戳) can0 CAN_ID<span class="hljs-meta">#数据（16进制）</span><br></code></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gcode"><span class="hljs-comment">(1759295819.807137)</span> ca<span class="hljs-symbol">n0</span> <span class="hljs-number">10</span>c<span class="hljs-attr">#8</span>e<span class="hljs-number">2</span>ef<span class="hljs-number">9</span>c<span class="hljs-number">16</span>b<span class="hljs-number">60</span>c<span class="hljs-number">369</span><br><span class="hljs-comment">(1759295819.807166)</span> ca<span class="hljs-symbol">n0</span> <span class="hljs-number">10</span>d<span class="hljs-attr">#d27</span>fbd<span class="hljs-number">12</span>e<span class="hljs-number">35</span>d<span class="hljs-number">2984</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>步骤1：读取signal_map.csv，建立信号映射</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> csv<br><br>signal_map = &#123;&#125;<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;signal_map/signal_map.csv&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    reader = csv.DictReader(f)<br>    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> reader:<br>        signal = row[<span class="hljs-string">&#x27;signal&#x27;</span>]<br>        can_id = <span class="hljs-built_in">int</span>(row[<span class="hljs-string">&#x27;can_id&#x27;</span>], <span class="hljs-number">16</span>)  <span class="hljs-comment"># 16进制转10进制</span><br>        byte_pos = <span class="hljs-built_in">int</span>(row[<span class="hljs-string">&#x27;byte&#x27;</span>])<br>        length = <span class="hljs-built_in">int</span>(row[<span class="hljs-string">&#x27;len&#x27;</span>])<br>        sig_type = row[<span class="hljs-string">&#x27;type&#x27;</span>]<br>        signal_map[signal] = &#123;<br>            <span class="hljs-string">&#x27;can_id&#x27;</span>: can_id,<br>            <span class="hljs-string">&#x27;byte_pos&#x27;</span>: byte_pos,<br>            <span class="hljs-string">&#x27;length&#x27;</span>: length,<br>            <span class="hljs-string">&#x27;type&#x27;</span>: sig_type<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>步骤2：解析canlog.txt，提取CAN消息</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict<br><br>can_data = defaultdict(<span class="hljs-built_in">list</span>)<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;canlog.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f:<br>        <span class="hljs-keyword">match</span> = re.<span class="hljs-keyword">match</span>(<span class="hljs-string">r&#x27;\(([\d.]+)\)\s+can0\s+([0-9a-fA-F]+)#([0-9a-fA-F]+)&#x27;</span>, line)<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">match</span>:<br>            timestamp = <span class="hljs-built_in">float</span>(<span class="hljs-keyword">match</span>.group(<span class="hljs-number">1</span>))<br>            can_id = <span class="hljs-built_in">int</span>(<span class="hljs-keyword">match</span>.group(<span class="hljs-number">2</span>), <span class="hljs-number">16</span>)<br>            data_hex = <span class="hljs-keyword">match</span>.group(<span class="hljs-number">3</span>)<br>            data_bytes = <span class="hljs-built_in">bytes</span>.fromhex(data_hex)<br>            can_data[can_id].append((timestamp, data_bytes))<br></code></pre></td></tr></table></figure>
+
+<p><strong>步骤3：按照signal_map提取每个信号的值</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python">signals_data = defaultdict(<span class="hljs-built_in">list</span>)<br><br><span class="hljs-keyword">for</span> signal, config <span class="hljs-keyword">in</span> signal_map.items():<br>    can_id = config[<span class="hljs-string">&#x27;can_id&#x27;</span>]<br>    byte_pos = config[<span class="hljs-string">&#x27;byte_pos&#x27;</span>]<br>    length = config[<span class="hljs-string">&#x27;length&#x27;</span>]<br>    sig_type = config[<span class="hljs-string">&#x27;type&#x27;</span>]<br>    <br>    <span class="hljs-keyword">if</span> can_id <span class="hljs-keyword">in</span> can_data:<br>        <span class="hljs-keyword">for</span> timestamp, data_bytes <span class="hljs-keyword">in</span> can_data[can_id]:<br>            <span class="hljs-keyword">if</span> byte_pos + length &lt;= <span class="hljs-built_in">len</span>(data_bytes):<br>                value_bytes = data_bytes[byte_pos:byte_pos+length]<br>                <span class="hljs-keyword">if</span> sig_type == <span class="hljs-string">&#x27;uint8&#x27;</span>:<br>                    value = <span class="hljs-built_in">int</span>.from_bytes(value_bytes, byteorder=<span class="hljs-string">&#x27;little&#x27;</span>, signed=<span class="hljs-literal">False</span>)<br>                <span class="hljs-keyword">elif</span> sig_type == <span class="hljs-string">&#x27;int16&#x27;</span>:<br>                    value = <span class="hljs-built_in">int</span>.from_bytes(value_bytes, byteorder=<span class="hljs-string">&#x27;little&#x27;</span>, signed=<span class="hljs-literal">True</span>)<br>                <span class="hljs-keyword">elif</span> sig_type == <span class="hljs-string">&#x27;uint16&#x27;</span>:<br>                    value = <span class="hljs-built_in">int</span>.from_bytes(value_bytes, byteorder=<span class="hljs-string">&#x27;little&#x27;</span>, signed=<span class="hljs-literal">False</span>)<br>                <span class="hljs-keyword">else</span>:<br>                    value = <span class="hljs-built_in">int</span>.from_bytes(value_bytes, byteorder=<span class="hljs-string">&#x27;little&#x27;</span>, signed=<span class="hljs-literal">False</span>)<br>                <br>                signals_data[signal].append((timestamp, value))<br></code></pre></td></tr></table></figure>
+
+<p><strong>步骤4：按信号顺序提取最后一个值并转换为ASCII</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">sig_names_ordered = [<span class="hljs-string">f&#x27;sig_<span class="hljs-subst">&#123;i&#125;</span>&#x27;</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">73</span>)]<br>flag_chars = []<br><br><span class="hljs-keyword">for</span> sig_name <span class="hljs-keyword">in</span> sig_names_ordered:<br>    <span class="hljs-keyword">if</span> sig_name <span class="hljs-keyword">in</span> signals_data <span class="hljs-keyword">and</span> <span class="hljs-built_in">len</span>(signals_data[sig_name]) &gt; <span class="hljs-number">0</span>:<br>        <span class="hljs-comment"># 取最后一个值</span><br>        val = signals_data[sig_name][-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]<br>        flag_chars.append(val)<br><br><span class="hljs-comment"># 转换为ASCII字符串</span><br>flag_str = <span class="hljs-string">&#x27;&#x27;</span>.join([<span class="hljs-built_in">chr</span>(v) <span class="hljs-keyword">if</span> <span class="hljs-number">32</span> &lt;= v &lt;= <span class="hljs-number">126</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;.&#x27;</span> <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> flag_chars])<br></code></pre></td></tr></table></figure>
+
+<p><strong>步骤5：提取flag</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><br>flag_pattern = <span class="hljs-string">r&#x27;flag\&#123;[^&#125;]+\&#125;&#x27;</span><br><span class="hljs-keyword">match</span> = re.search(flag_pattern, flag_str, re.IGNORECASE)<br><span class="hljs-keyword">if</span> <span class="hljs-keyword">match</span>:<br>    flag = <span class="hljs-keyword">match</span>.group()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Found flag: <span class="hljs-subst">&#123;flag&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>完整解题脚本</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-keyword">import</span> csv<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict<br><br><span class="hljs-comment"># 读取signal_map</span><br>signal_map = &#123;&#125;<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;signal_map/signal_map.csv&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    reader = csv.DictReader(f)<br>    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> reader:<br>        signal = row[<span class="hljs-string">&#x27;signal&#x27;</span>]<br>        can_id = <span class="hljs-built_in">int</span>(row[<span class="hljs-string">&#x27;can_id&#x27;</span>], <span class="hljs-number">16</span>)<br>        byte_pos = <span class="hljs-built_in">int</span>(row[<span class="hljs-string">&#x27;byte&#x27;</span>])<br>        length = <span class="hljs-built_in">int</span>(row[<span class="hljs-string">&#x27;len&#x27;</span>])<br>        sig_type = row[<span class="hljs-string">&#x27;type&#x27;</span>]<br>        signal_map[signal] = &#123;<br>            <span class="hljs-string">&#x27;can_id&#x27;</span>: can_id,<br>            <span class="hljs-string">&#x27;byte_pos&#x27;</span>: byte_pos,<br>            <span class="hljs-string">&#x27;length&#x27;</span>: length,<br>            <span class="hljs-string">&#x27;type&#x27;</span>: sig_type<br>        &#125;<br><br><span class="hljs-comment"># 解析canlog.txt</span><br>can_data = defaultdict(<span class="hljs-built_in">list</span>)<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;canlog.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f:<br>        line = line.strip()<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> line:<br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">match</span> = re.<span class="hljs-keyword">match</span>(<span class="hljs-string">r&#x27;\(([\d.]+)\)\s+can0\s+([0-9a-fA-F]+)#([0-9a-fA-F]+)&#x27;</span>, line)<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">match</span>:<br>            timestamp = <span class="hljs-built_in">float</span>(<span class="hljs-keyword">match</span>.group(<span class="hljs-number">1</span>))<br>            can_id = <span class="hljs-built_in">int</span>(<span class="hljs-keyword">match</span>.group(<span class="hljs-number">2</span>), <span class="hljs-number">16</span>)<br>            data_hex = <span class="hljs-keyword">match</span>.group(<span class="hljs-number">3</span>)<br>            data_bytes = <span class="hljs-built_in">bytes</span>.fromhex(data_hex)<br>            can_data[can_id].append((timestamp, data_bytes))<br><br><span class="hljs-comment"># 提取每个信号的数值</span><br>signals_data = defaultdict(<span class="hljs-built_in">list</span>)<br><br><span class="hljs-keyword">for</span> signal, config <span class="hljs-keyword">in</span> signal_map.items():<br>    can_id = config[<span class="hljs-string">&#x27;can_id&#x27;</span>]<br>    byte_pos = config[<span class="hljs-string">&#x27;byte_pos&#x27;</span>]<br>    length = config[<span class="hljs-string">&#x27;length&#x27;</span>]<br>    sig_type = config[<span class="hljs-string">&#x27;type&#x27;</span>]<br>    <br>    <span class="hljs-keyword">if</span> can_id <span class="hljs-keyword">in</span> can_data:<br>        <span class="hljs-keyword">for</span> timestamp, data_bytes <span class="hljs-keyword">in</span> can_data[can_id]:<br>            <span class="hljs-keyword">if</span> byte_pos + length &lt;= <span class="hljs-built_in">len</span>(data_bytes):<br>                value_bytes = data_bytes[byte_pos:byte_pos+length]<br>                <span class="hljs-keyword">if</span> sig_type == <span class="hljs-string">&#x27;uint8&#x27;</span>:<br>                    value = <span class="hljs-built_in">int</span>.from_bytes(value_bytes, byteorder=<span class="hljs-string">&#x27;little&#x27;</span>, signed=<span class="hljs-literal">False</span>)<br>                <span class="hljs-keyword">elif</span> sig_type == <span class="hljs-string">&#x27;int16&#x27;</span>:<br>                    value = <span class="hljs-built_in">int</span>.from_bytes(value_bytes, byteorder=<span class="hljs-string">&#x27;little&#x27;</span>, signed=<span class="hljs-literal">True</span>)<br>                <span class="hljs-keyword">elif</span> sig_type == <span class="hljs-string">&#x27;uint16&#x27;</span>:<br>                    value = <span class="hljs-built_in">int</span>.from_bytes(value_bytes, byteorder=<span class="hljs-string">&#x27;little&#x27;</span>, signed=<span class="hljs-literal">False</span>)<br>                <span class="hljs-keyword">else</span>:<br>                    value = <span class="hljs-built_in">int</span>.from_bytes(value_bytes, byteorder=<span class="hljs-string">&#x27;little&#x27;</span>, signed=<span class="hljs-literal">False</span>)<br>                <br>                signals_data[signal].append((timestamp, value))<br><br><span class="hljs-comment"># 排序</span><br><span class="hljs-keyword">for</span> signal <span class="hljs-keyword">in</span> signals_data:<br>    signals_data[signal].sort(key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">0</span>])<br><br><span class="hljs-comment"># 按信号顺序提取最后一个值</span><br>sig_names_ordered = [<span class="hljs-string">f&#x27;sig_<span class="hljs-subst">&#123;i&#125;</span>&#x27;</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">73</span>)]<br>flag_chars = []<br><br><span class="hljs-keyword">for</span> sig_name <span class="hljs-keyword">in</span> sig_names_ordered:<br>    <span class="hljs-keyword">if</span> sig_name <span class="hljs-keyword">in</span> signals_data <span class="hljs-keyword">and</span> <span class="hljs-built_in">len</span>(signals_data[sig_name]) &gt; <span class="hljs-number">0</span>:<br>        val = signals_data[sig_name][-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]<br>        flag_chars.append(val)<br><br><span class="hljs-comment"># 转换为ASCII字符串</span><br>flag_str = <span class="hljs-string">&#x27;&#x27;</span>.join([<span class="hljs-built_in">chr</span>(v) <span class="hljs-keyword">if</span> <span class="hljs-number">32</span> &lt;= v &lt;= <span class="hljs-number">126</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;.&#x27;</span> <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> flag_chars])<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Extracted string: <span class="hljs-subst">&#123;flag_str&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 查找flag模式</span><br>flag_pattern = <span class="hljs-string">r&#x27;flag\&#123;[^&#125;]+\&#125;&#x27;</span><br><span class="hljs-keyword">match</span> = re.search(flag_pattern, flag_str, re.IGNORECASE)<br><span class="hljs-keyword">if</span> <span class="hljs-keyword">match</span>:<br>    flag = <span class="hljs-keyword">match</span>.group()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\nFound flag: <span class="hljs-subst">&#123;flag&#125;</span>&quot;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-comment"># 手动查找flag开始和结束位置</span><br>    flag_start = flag_str.lower().find(<span class="hljs-string">&#x27;flag&#123;&#x27;</span>)<br>    <span class="hljs-keyword">if</span> flag_start != -<span class="hljs-number">1</span>:<br>        flag_end = flag_str.find(<span class="hljs-string">&#x27;&#125;&#x27;</span>, flag_start)<br>        <span class="hljs-keyword">if</span> flag_end != -<span class="hljs-number">1</span>:<br>            flag = flag_str[flag_start:flag_end+<span class="hljs-number">1</span>]<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Found flag: <span class="hljs-subst">&#123;flag&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>成功拿到flag:<code>flag&#123;V3h1cle_N3tw0rk1ng_53cu71ty&#125;</code></p>
+<h2 id="强网-applet"><a href="#强网-applet" class="headerlink" title="强网-applet"></a>强网-applet</h2><p>解压文件发现是一个小程序的包，写一个代码来解析一下这个小程序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-keyword">import</span> struct<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">unpack_wxapkg</span>(<span class="hljs-params">wxapkg_file, output_dir</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;解包微信小程序 wxapkg 文件&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(wxapkg_file, <span class="hljs-string">&#x27;rb&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-comment"># 读取头部信息</span><br>        first_mark = struct.unpack(<span class="hljs-string">&#x27;B&#x27;</span>, f.read(<span class="hljs-number">1</span>))[<span class="hljs-number">0</span>]<br>        f.read(<span class="hljs-number">4</span>)  <span class="hljs-comment"># 跳过Info1</span><br>        f.read(<span class="hljs-number">4</span>)  <span class="hljs-comment"># 跳过Info2</span><br>        <span class="hljs-comment"># 读取数据区偏移量 (大端序，用&#x27;&gt;I&#x27;表示)</span><br>        data_section_offset = struct.unpack(<span class="hljs-string">&#x27;&gt;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>        f.read(<span class="hljs-number">1</span>)  <span class="hljs-comment"># 跳过保留字节</span><br>        <span class="hljs-comment"># 读取文件数量</span><br>        file_count = struct.unpack(<span class="hljs-string">&#x27;&gt;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>        <span class="hljs-comment"># 读取文件列表</span><br>        file_list = []<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(file_count):<br>            <span class="hljs-comment"># 文件名长度</span><br>            name_len = struct.unpack(<span class="hljs-string">&#x27;&gt;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            <span class="hljs-comment"># 文件名 (UTF-8编码)</span><br>            name = f.read(name_len).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>            <span class="hljs-comment"># 文件偏移和大小</span><br>            offset = struct.unpack(<span class="hljs-string">&#x27;&gt;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            size = struct.unpack(<span class="hljs-string">&#x27;&gt;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            file_list.append(&#123;<br>                <span class="hljs-string">&#x27;name&#x27;</span>: name,<br>                <span class="hljs-string">&#x27;offset&#x27;</span>: offset,<br>                <span class="hljs-string">&#x27;size&#x27;</span>: size<br>            &#125;)<br>        <span class="hljs-comment"># 创建输出目录</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(output_dir):<br>            os.makedirs(output_dir)<br>        <span class="hljs-comment"># 解包每个文件</span><br>        <span class="hljs-keyword">for</span> file_info <span class="hljs-keyword">in</span> file_list:<br>            name = file_info[<span class="hljs-string">&#x27;name&#x27;</span>].lstrip(<span class="hljs-string">&#x27;/&#x27;</span>)<br>            file_path = os.path.join(output_dir, name)<br>            file_dir = os.path.dirname(file_path)<br>            <span class="hljs-comment"># 创建文件所在目录</span><br>            <span class="hljs-keyword">if</span> file_dir <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> os.path.exists(file_dir):<br>                os.makedirs(file_dir)<br>            <span class="hljs-comment"># 读取并写入文件数据</span><br>            f.seek(file_info[<span class="hljs-string">&#x27;offset&#x27;</span>])<br>            file_data = f.read(file_info[<span class="hljs-string">&#x27;size&#x27;</span>])<br>            <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> out_f:<br>                out_f.write(file_data)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Extracted: <span class="hljs-subst">&#123;file_info[<span class="hljs-string">&#x27;name&#x27;</span>]&#125;</span>&quot;</span>)<br>x=<span class="hljs-string">r&quot;F:\Desktop\比赛练习题目\Reverse\强网杯车联网\题目\__APP__.wxapkg&quot;</span><br>y=<span class="hljs-string">r&quot;F:\Desktop\比赛练习题目\Reverse\强网杯车联网\题目\out&quot;</span><br>unpack_wxapkg(x,y)<br></code></pre></td></tr></table></figure>
+
+<p>会得到</p>
+<img src="/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/wps1.jpg" srcset="/img/loading.gif" lazyload class="" title="img"> 
+
+<p>然后去查看关键的这几个函数，没有格式化，但是不妨碍看</p>
+<p>代码如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 这是页面定义</span><br>Page(&#123;<br>    data: &#123;<br>        vin: <span class="hljs-string">&quot;&quot;</span>,     <span class="hljs-comment">// 存储输入的 VIN（车辆识别码）</span><br>        status: <span class="hljs-string">&quot;&quot;</span>   <span class="hljs-comment">// 存储校验结果</span><br>    &#125;,<br>    <span class="hljs-comment">// 输入 VIN 时触发</span><br>    onVinInput: function (t) &#123;<br>        this.setData(&#123;<br>            vin: t.detail.value.toUpperCase()  <span class="hljs-comment">// 自动转成大写</span><br>        &#125;);<br>    &#125;,<br>    <span class="hljs-comment">// 点击“提交验证”按钮时触发</span><br>    onSubmit: function () &#123;<br>        var t = this.data.vin;<br>        <span class="hljs-keyword">if</span> (t.length === <span class="hljs-number">17</span>) &#123;<br>            <span class="hljs-comment">// 当长度为17位时，执行校验</span><br>            <span class="hljs-keyword">if</span> (this.verifyVinByRC4(t)) &#123;<br>                this.setData(&#123; status: <span class="hljs-string">&quot;校验通过 🎉&quot;</span> &#125;);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                this.setData(&#123; status: <span class="hljs-string">&quot;校验失败 ❌&quot;</span> &#125;);<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            this.setData(&#123; status: <span class="hljs-string">&quot;VIN长度必须为17位&quot;</span> &#125;);<br>        &#125;<br>    &#125;,<br>    <span class="hljs-comment">// === 加密校验逻辑部分 ===</span><br>    verifyVinByRC4: function (t) &#123;<br>        <span class="hljs-comment">// 用 RC4 变体加密 VIN，然后与固定密文对比</span><br>        <span class="hljs-keyword">return</span> (<br>            <span class="hljs-string">&quot;7AF2C74EAD5C2D4505E94B820275CA8C52&quot;</span> ===<br>            this.variantRC4Encrypt(t, <span class="hljs-string">&quot;Z1X3Y4E5Z8V2A6H6&quot;</span>) <span class="hljs-comment">// key 固定</span><br>        );<br>    &#125;,<br>    <span class="hljs-comment">// 变体 RC4 算法（非标准 RC4）</span><br>    variantRC4Encrypt: function (text, key) &#123;<br>        <span class="hljs-comment">// 初始化S盒</span><br>        var r = Array.from(&#123; length: <span class="hljs-number">256</span> &#125;, (v, i) =&gt; i);<br>        var a = <span class="hljs-number">0</span>;<br>        var keyBytes = this.stringToBytes(key);<br>        <span class="hljs-comment">// 第一轮 KSA（Key Scheduling Algorithm）</span><br>        <span class="hljs-keyword">for</span> (var s = <span class="hljs-number">0</span>; s &lt; <span class="hljs-number">256</span>; s++) &#123;<br>            a = (a + r[s] + keyBytes[s % keyBytes.length]) % <span class="hljs-number">256</span>;<br>            var temp = r[s];<br>            r[s] = r[a];<br>            r[a] = temp;<br>        &#125;<br>        <span class="hljs-comment">// 第二轮反向扰动（这个是“变体”部分）</span><br>        a = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (var o = <span class="hljs-number">255</span>; o &gt;= <span class="hljs-number">0</span>; o--) &#123;<br>            a = (a + r[o] + keyBytes[o % keyBytes.length]) % <span class="hljs-number">256</span>;<br>            var temp2 = r[o];<br>            r[o] = r[a];<br>            r[a] = temp2;<br>        &#125;<br>        <span class="hljs-comment">// PRGA（生成密钥流 + 异或加密）</span><br>        var h = <span class="hljs-number">0</span>;<br>        a = <span class="hljs-number">0</span>;<br>        var resultBytes = [];<br>        var textBytes = this.stringToBytes(text);<br>        <span class="hljs-keyword">for</span> (var C = <span class="hljs-number">0</span>; C &lt; textBytes.length; C++) &#123;<br>            h = (h + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span>;<br>            a = (a + r[h]) % <span class="hljs-number">256</span>;<br>            var temp3 = r[h];<br>            r[h] = r[a];<br>            r[a] = temp3;<br>            <span class="hljs-comment">// 混合索引（RC4变体）</span><br>            var y = (r[h] + r[a]) % <span class="hljs-number">256</span>;<br>            var g = r[(r[h] + r[a] + r[y]) % <span class="hljs-number">256</span>];<br>            <span class="hljs-comment">// 异或加密，加上位置扰动 (C % 256)</span><br>            var l = textBytes[C] ^ g ^ (C % <span class="hljs-number">256</span>);<br>            resultBytes.push(l);<br>        &#125;<br>        <span class="hljs-comment">// 输出十六进制字符串</span><br>        <span class="hljs-keyword">return</span> this.bytesToHex(resultBytes);<br>    &#125;,<br>    <span class="hljs-comment">// 将字符串转换为字节数组</span><br>    stringToBytes: function (t) &#123;<br>        var arr = [];<br>        <span class="hljs-keyword">for</span> (var i = <span class="hljs-number">0</span>; i &lt; t.length; i++) &#123;<br>            arr.push(t.charCodeAt(i));<br>        &#125;<br>        <span class="hljs-keyword">return</span> arr;<br>    &#125;,<br>    <span class="hljs-comment">// 字节数组 → 十六进制字符串</span><br><br>    bytesToHex: function (bytes) &#123;<br>        var n = <span class="hljs-string">&quot;&quot;</span>;<br>        <span class="hljs-keyword">for</span> (var i = <span class="hljs-number">0</span>; i &lt; bytes.length; i++) &#123;<br>            var a = bytes[i];<br>            var high = Math.<span class="hljs-built_in">floor</span>(a / <span class="hljs-number">16</span>);<br>            var low = a % <span class="hljs-number">16</span>;<br>            n += this.numberToVinChar(high) + this.numberToVinChar(low);<br>        &#125;<br>        <span class="hljs-keyword">return</span> n;<br>    &#125;,<br>    <span class="hljs-comment">// 数字 → 十六进制字符</span><br>    numberToVinChar: function (t) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0123456789ABCDEF&quot;</span>[t % <span class="hljs-number">16</span>];<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>就是一个RC4，解密就行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">string_to_bytes</span>(<span class="hljs-params">s</span>):<br>    <span class="hljs-keyword">return</span> [<span class="hljs-built_in">ord</span>(c) <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s]<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">number_to_hexchar</span>(<span class="hljs-params">n</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0123456789ABCDEF&quot;</span>[n % <span class="hljs-number">16</span>]<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">bytes_to_hex</span>(<span class="hljs-params">byte_arr</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>.join(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:02X&#125;</span>&quot;</span> <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> byte_arr)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">variant_rc4</span>(<span class="hljs-params">text_bytes, key</span>):<br>    <span class="hljs-comment"># 初始化S盒</span><br>    r = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>))<br>    a = <span class="hljs-number">0</span><br>    key_bytes = string_to_bytes(key)<br>    <span class="hljs-comment"># 第一轮 KSA</span><br>    <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):<br>        a = (a + r[s] + key_bytes[s % <span class="hljs-built_in">len</span>(key_bytes)]) % <span class="hljs-number">256</span><br>        r[s], r[a] = r[a], r[s]<br>    <span class="hljs-comment"># 第二轮反向扰动</span><br>    a = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> o <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">255</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):<br>        a = (a + r[o] + key_bytes[o % <span class="hljs-built_in">len</span>(key_bytes)]) % <span class="hljs-number">256</span><br>        r[o], r[a] = r[a], r[o]<br>    <span class="hljs-comment"># PRGA</span><br>    h = <span class="hljs-number">0</span><br>    a = <span class="hljs-number">0</span><br>    result = []<br>    <span class="hljs-keyword">for</span> C <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(text_bytes)):<br>        h = (h + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span><br>        a = (a + r[h]) % <span class="hljs-number">256</span><br>        r[h], r[a] = r[a], r[h]<br>        y = (r[h] + r[a]) % <span class="hljs-number">256</span><br>        g = r[(r[h] + r[a] + r[y]) % <span class="hljs-number">256</span>]<br>        l = text_bytes[C] ^ g ^ (C % <span class="hljs-number">256</span>)<br>        result.append(l)<br>    <span class="hljs-keyword">return</span> result<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">encrypt_vin</span>(<span class="hljs-params">vin, key=<span class="hljs-string">&quot;Z1X3Y4E5Z8V2A6H6&quot;</span></span>):<br>    vin_bytes = string_to_bytes(vin)<br>    encrypted_bytes = variant_rc4(vin_bytes, key)<br>    <span class="hljs-keyword">return</span> bytes_to_hex(encrypted_bytes)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">decrypt_vin</span>(<span class="hljs-params">hex_str, key=<span class="hljs-string">&quot;Z1X3Y4E5Z8V2A6H6&quot;</span></span>):<br>    <span class="hljs-comment"># RC4对称，加密 = 解密</span><br>    cipher_bytes = <span class="hljs-built_in">bytes</span>.fromhex(hex_str)<br>    decrypted_bytes = variant_rc4(<span class="hljs-built_in">list</span>(cipher_bytes), key)<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>.join(<span class="hljs-built_in">chr</span>(b) <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> decrypted_bytes)<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    key = <span class="hljs-string">&quot;Z1X3Y4E5Z8V2A6H6&quot;</span><br>    cipher = <span class="hljs-string">&quot;7AF2C74EAD5C2D4505E94B820275CA8C52&quot;</span><br>    <span class="hljs-comment"># 解密（等价于再加密一次）</span><br>    plain = decrypt_vin(cipher, key)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;解密结果：&quot;</span>, plain)<br>    <span class="hljs-comment"># 反向验证加密</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;重新加密：&quot;</span>, encrypt_vin(plain, key))<br></code></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<img src="/2025/11/15/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E8%BD%A6%E8%81%94%E7%BD%91%E8%B5%9B%E9%81%93/wps2.jpg" srcset="/img/loading.gif" lazyload class="" title="img">
+
+<p>flag{L0J6Q0P7H3E2I5U6H}</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>第九届“强网杯”行业领域专项赛车联网安全赛-初赛（CTF）WP</div>
+      <div>https://erkangkang.github.io/2025/11/15/25强网杯车联网赛道/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>尔康康康康</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年11月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/09/21/jadxcherrystudio%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/" title="jadx+Cherry Studio实现自动化安卓逆向">
+                        <span class="hidden-mobile">jadx+Cherry Studio实现自动化安卓逆向</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

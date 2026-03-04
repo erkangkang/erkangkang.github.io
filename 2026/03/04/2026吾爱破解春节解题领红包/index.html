@@ -1,0 +1,1089 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/red.jpg">
+  <link rel="icon" href="/img/red.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="尔康康康康">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2026 吾爱破解春节解题（day1-day6+mcp中级题）Day1 - 送分题关注论坛微信公众号：吾爱破解论坛，回复“52TDL”获得口令。 Day2 - Windows 初级题一、题目概览 平台: Windows 控制台程序  难度: 初级  交互: 提示输入 password，正确则给出 flag   本题的核心在于：  先通过长度与内容完全匹配的方式校验输入 再做一次自定义 checks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2026 吾爱破解春节解题（day1-day6+mcp中级题）">
+<meta property="og:url" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/index.html">
+<meta property="og:site_name" content="尔康康康康">
+<meta property="og:description" content="2026 吾爱破解春节解题（day1-day6+mcp中级题）Day1 - 送分题关注论坛微信公众号：吾爱破解论坛，回复“52TDL”获得口令。 Day2 - Windows 初级题一、题目概览 平台: Windows 控制台程序  难度: 初级  交互: 提示输入 password，正确则给出 flag   本题的核心在于：  先通过长度与内容完全匹配的方式校验输入 再做一次自定义 checks">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304162718810.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304162819492.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/72bfc11488a38b71426fcd79fe9da506.jpg">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163016525.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163210849.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163232730.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163851159.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163922332.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163952108.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304164313208.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304164530175.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304164705282.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304164829529.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304164903819.png">
+<meta property="og:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304165031605.png">
+<meta property="article:published_time" content="2026-03-04T05:20:10.000Z">
+<meta property="article:modified_time" content="2026-03-04T09:52:46.808Z">
+<meta property="article:author" content="尔康康康康">
+<meta property="article:tag" content="逆向分析">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://erkangkang.github.io/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304162718810.png">
+  
+  
+  
+  <title>2026 吾爱破解春节解题（day1-day6+mcp中级题） - 尔康康康康</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erkangkang.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":null,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"pgXLabB07JIbb2xkpF8QuTDd-gzGzoHsz","app_key":"NdAK7NEnw4oYGFA92BPO0cMN","pv_format":"总访问量 {} 次","uv_format":"总访客数 {} 人","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>尔康康康康</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2026 吾爱破解春节解题（day1-day6+mcp中级题）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-04 13:20" pubdate>
+          2026年3月4日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">2026 吾爱破解春节解题（day1-day6+mcp中级题）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="2026-吾爱破解春节解题（day1-day6-mcp中级题）"><a href="#2026-吾爱破解春节解题（day1-day6-mcp中级题）" class="headerlink" title="2026 吾爱破解春节解题（day1-day6+mcp中级题）"></a>2026 吾爱破解春节解题（day1-day6+mcp中级题）</h1><h2 id="Day1-送分题"><a href="#Day1-送分题" class="headerlink" title="Day1 - 送分题"></a>Day1 - 送分题</h2><p>关注论坛微信公众号：吾爱破解论坛，回复“52TDL”获得口令。</p>
+<h2 id="Day2-Windows-初级题"><a href="#Day2-Windows-初级题" class="headerlink" title="Day2 - Windows 初级题"></a>Day2 - Windows 初级题</h2><h3 id="一、题目概览"><a href="#一、题目概览" class="headerlink" title="一、题目概览"></a>一、题目概览</h3><ul>
+<li><p><strong>平台</strong>: Windows 控制台程序</p>
+</li>
+<li><p><strong>难度</strong>: 初级</p>
+</li>
+<li><p><strong>交互</strong>: 提示输入 password，正确则给出 flag</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304162718810.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304162718810"></li>
+</ul>
+<p>本题的核心在于：</p>
+<ul>
+<li>先通过长度与内容完全匹配的方式校验输入</li>
+<li>再做一次自定义 checksum 校验</li>
+<li>所有校验全部通过后，原样输出 “Correct flag: &lt;你的输入&gt;”</li>
+</ul>
+<h3 id="二、入口与主逻辑定位"><a href="#二、入口与主逻辑定位" class="headerlink" title="二、入口与主逻辑定位"></a>二、入口与主逻辑定位</h3><p>在 Strings 窗口中搜索关键词：</p>
+<p><code>&quot;Correct flag&quot;</code> → 字符串地址 <code>0x4D3201</code></p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304162819492.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304162819492">
+
+<p>对该字符串做交叉引用（xrefs），可以定位到函数 <code>sub_4CD130</code></p>
+<p>反编译 <code>sub_4CD130</code> 可以看到核心逻辑：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> __cdecl <span class="hljs-title function_">sub_4CD130</span><span class="hljs-params">(<span class="hljs-type">char</span> a1)</span><br>&#123;<br>  ...<br>  sub_4C7E50(..., <span class="hljs-string">&quot;Hint: Fake flag; length is key&quot;</span>);<br>  ...<br>  sub_4C7E50(..., <span class="hljs-string">&quot;\n[?] Enter the password: &quot;</span>);<br>  v2 = sub_401560();                <span class="hljs-comment">// 读取用户输入</span><br>  sub_4C5840(&amp;dword_4D25E0, &amp;v22, v2);<br>  Str = v22;                        <span class="hljs-comment">// Str 指向输入字符串</span><br><br>  v3 = sub_401740((<span class="hljs-type">int</span>)v22);        <span class="hljs-comment">// 一次简单过滤 / 假 flag 检测</span><br>  v4 = <span class="hljs-number">53</span>;                          <span class="hljs-comment">// &#x27;5&#x27;</span><br>  v5 = v3;<br>  v6 = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">if</span> ( !v5 )<br>  &#123;<br>    <span class="hljs-keyword">while</span> ( Str[v6] == v4 )<br>    &#123;<br>      <span class="hljs-keyword">if</span> ( ++v6 == <span class="hljs-number">16</span> )<br>      &#123;<br>        sub_4C7E50(..., <span class="hljs-string">&quot;\n[!] You&#x27;re getting closer...&quot;</span>);<br>        <span class="hljs-keyword">goto</span> LABEL_9;<br>      &#125;<br>      v4 = byte_4D3032[v6];         <span class="hljs-comment">// 与某个 16 字节序列逐字比对</span><br>    &#125;<br>    <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">strlen</span>(Str) != <span class="hljs-number">31</span> )<br>    &#123;<br>      sub_4C7E50(..., <span class="hljs-string">&quot;\n[!] Hint: The length is your first real challenge.&quot;</span>);<br>      <span class="hljs-keyword">goto</span> LABEL_9;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> ( (<span class="hljs-type">unsigned</span> __int8)sub_4016D0(Str, <span class="hljs-number">31</span>) )  <span class="hljs-comment">// 关键内容校验</span><br>    &#123;<br>      <span class="hljs-comment">// 通过 sub_4016D0 后，继续做 checksum 校验</span><br>      Str = <span class="hljs-number">0</span>;<br>      v8 = *v22;<br>      <span class="hljs-keyword">if</span> ( !*v22 )<br>        <span class="hljs-keyword">goto</span> LABEL_16;<br>      v9 = <span class="hljs-number">0</span>;<br>      <span class="hljs-keyword">do</span><br>      &#123;<br>        Str += ++v9 * v8;<br>        v8 = v22[v9];<br>      &#125;<br>      <span class="hljs-keyword">while</span> ( v8 );<br>      <span class="hljs-keyword">if</span> ( Str != (<span class="hljs-type">char</span> *)<span class="hljs-number">44709</span> )<br>      &#123;<br>        sub_4C7E50(..., <span class="hljs-string">&quot;\n[!] Checksum failed! Something is wrong...&quot;</span>);<br>      &#125;<br>      <span class="hljs-keyword">else</span><br>      &#123;<br>        <span class="hljs-comment">// 所有检查通过，输出成功信息与 flag</span><br>        sub_4C7E50(..., <span class="hljs-string">&quot;\n========================================&quot;</span>);<br>        sub_4C7E50(..., <span class="hljs-string">&quot;[+] Correct flag: &quot;</span>);<br>        sub_4C4330(..., v22, v23);  <span class="hljs-comment">// 打印我们的输入</span><br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>从这段逻辑可以得到几个关键信息：</p>
+<ol>
+<li><code>sub_401740</code> 用来过滤某些”假 flag”，如果返回非 0，就直接输出 “Nice try”</li>
+<li>接着有一个循环，将输入前 16 字节与 <code>byte_4D3032</code> 里的一串字节逐个比较</li>
+<li>真正的 flag 需要：<ul>
+<li>长度为 31 字节（<code>strlen(Str) == 31</code>）</li>
+<li>通过 <code>sub_4016D0(Str, 31)</code> 的逐字节校验</li>
+<li>再通过 checksum 条件：$\sum_{i&#x3D;0}^{n-1} (i+1) \times \text{ord}(s[i]) &#x3D; 44709$</li>
+</ul>
+</li>
+</ol>
+<h3 id="三、内容校验函数-sub-4016D0"><a href="#三、内容校验函数-sub-4016D0" class="headerlink" title="三、内容校验函数 sub_4016D0"></a>三、内容校验函数 sub_4016D0</h3><p>反编译 <code>sub_4016D0</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">bool</span> __cdecl <span class="hljs-title function_">sub_4016D0</span><span class="hljs-params">(<span class="hljs-type">int</span> a1, <span class="hljs-type">int</span> a2)</span><br>&#123;<br>  <span class="hljs-type">unsigned</span> __int8 *Block;<br>  Block = (<span class="hljs-type">unsigned</span> __int8 *)sub_4CB710(<span class="hljs-number">0x64</span>u);<br>  sub_401620(Block);          <span class="hljs-comment">// 关键：在 Block 中生成目标序列</span><br>  <span class="hljs-keyword">if</span> ( a2 &lt;= <span class="hljs-number">0</span> )<br>  &#123;<br>    v4 = <span class="hljs-number">0</span>;<br>  &#125;<br>  <span class="hljs-keyword">else</span><br>  &#123;<br>    v3 = <span class="hljs-number">0</span>;<br>    v4 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">do</span><br>    &#123;<br>      v5 = *(<span class="hljs-type">char</span> *)(a1 + v3) == Block[v3];<br>      ++v3;<br>      v4 += v5;<br>    &#125;<br>    <span class="hljs-keyword">while</span> ( a2 != v3 );<br>  &#125;<br>  j_j_free(Block);<br>  <span class="hljs-keyword">return</span> a2 == v4;            <span class="hljs-comment">// 只有全部字符都相等才返回 true</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>可以看出：</p>
+<ul>
+<li><code>sub_4016D0</code> 内部先调用 <code>sub_401620</code> 在一块缓冲区中生成真正的”答案串”</li>
+<li>然后将我们的输入与 Buffer 的前 <code>a2</code> 个字节逐一比较</li>
+<li>每相同一个字符就 <code>v4++</code>，最后要求 <code>v4 == a2</code></li>
+</ul>
+<p>因此，要找到正确口令，就必须还原 <code>sub_401620</code> 生成的那 31 个字节。</p>
+<h3 id="四、还原-sub-401620-生成的密文"><a href="#四、还原-sub-401620-生成的密文" class="headerlink" title="四、还原 sub_401620 生成的密文"></a>四、还原 sub_401620 生成的密文</h3><p>反编译 <code>sub_401620</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c">_OWORD *__cdecl <span class="hljs-title function_">sub_401620</span><span class="hljs-params">(<span class="hljs-type">int</span> a1)</span><br>&#123;<br>  *(_DWORD *)a1 = <span class="hljs-number">758280311</span>;<br>  *(_DWORD *)(a1 + <span class="hljs-number">4</span>) = <span class="hljs-number">1663511336</span>;<br>  *(_DWORD *)(a1 + <span class="hljs-number">8</span>) = <span class="hljs-number">1880974179</span>;<br>  *(_DWORD *)(a1 + <span class="hljs-number">12</span>) = <span class="hljs-number">494170226</span>;<br>  *(_DWORD *)(a1 + <span class="hljs-number">16</span>) = <span class="hljs-number">842146570</span>;<br>  *(_DWORD *)(a1 + <span class="hljs-number">20</span>) = <span class="hljs-number">657202491</span>;<br>  *(_DWORD *)(a1 + <span class="hljs-number">24</span>) = <span class="hljs-number">658185525</span>;<br>  *(_BYTE *)(a1 + <span class="hljs-number">30</span>) = <span class="hljs-number">99</span>;<br>  *(_WORD *)(a1 + <span class="hljs-number">28</span>) = <span class="hljs-number">12323</span>;<br>  <span class="hljs-keyword">do</span><br>    *result++ ^= <span class="hljs-number">0x42</span>u;<br>  <span class="hljs-keyword">while</span> ( result != (_BYTE *)(a1 + <span class="hljs-number">31</span>) );<br>  *(_BYTE *)(a1 + <span class="hljs-number">31</span>) = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>关键点：</p>
+<ol>
+<li>先往 <code>a1</code> 这块缓冲区写入一系列整数（小端存储）</li>
+<li>然后从 <code>a1</code> 开始到 <code>a1 + 31</code>，逐字节执行 <code>^= 0x42</code>（与 0x42 异或）</li>
+<li>最后在偏移 31 写入 <code>0</code> 作为字符串结束符</li>
+</ol>
+<p>用 Python 脚本还原：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python">nums = [<span class="hljs-number">758280311</span>, <span class="hljs-number">1663511336</span>, <span class="hljs-number">1880974179</span>,<br>        <span class="hljs-number">494170226</span>, <span class="hljs-number">842146570</span>, <span class="hljs-number">657202491</span>, <span class="hljs-number">658185525</span>]<br><br>buf = <span class="hljs-built_in">bytearray</span>()<br><span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> nums:<br>    buf += n.to_bytes(<span class="hljs-number">4</span>, <span class="hljs-string">&quot;little&quot;</span>, signed=<span class="hljs-literal">True</span>)<br><br>buf += (<span class="hljs-number">12323</span>).to_bytes(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;little&quot;</span>, signed=<span class="hljs-literal">True</span>)<br>buf.append(<span class="hljs-number">99</span>)<br><br>buf = buf[:<span class="hljs-number">31</span>]<br>flag = <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-built_in">chr</span>(b ^ <span class="hljs-number">0x42</span>) <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> buf)<br><span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+
+<h3 id="五、最终答案"><a href="#五、最终答案" class="headerlink" title="五、最终答案"></a>五、最终答案</h3><figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs erlang-repl"><span class="hljs-number">52</span>pojie!!!_2026_Happy_new_year!<br></code></pre></td></tr></table></figure>
+
+<p>验证：长度为 31 字节，checksum 计算结果为 44709，符合所有校验条件。</p>
+<hr>
+<h2 id="Day3-Android-初级题"><a href="#Day3-Android-初级题" class="headerlink" title="Day3 - Android 初级题"></a>Day3 - Android 初级题</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>玩玩游戏就过关了，新年快乐，别感冒！</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/72bfc11488a38b71426fcd79fe9da506.jpg" srcset="/img/loading.gif" lazyload class="" title="72bfc11488a38b71426fcd79fe9da506">
+
+<hr>
+<h2 id="Day4-Windows-初级题"><a href="#Day4-Windows-初级题" class="headerlink" title="Day4 - Windows 初级题"></a>Day4 - Windows 初级题</h2><h3 id="一、题目信息"><a href="#一、题目信息" class="headerlink" title="一、题目信息"></a>一、题目信息</h3><ul>
+<li><strong>题目名称</strong>: 【2026 春节】解题领红包之四 {Windows 初级题}</li>
+<li><strong>出题老师</strong>: 云在天</li>
+<li><strong>题目类型</strong>: Windows 逆向 &#x2F; Python 反编译</li>
+<li><strong>难度</strong>: 初级</li>
+</ul>
+<h3 id="二、工具准备"><a href="#二、工具准备" class="headerlink" title="二、工具准备"></a>二、工具准备</h3><ul>
+<li><strong>pyinstxtractor</strong>: PyInstaller 打包文件提取工具</li>
+<li><strong>Python 3.x</strong>: 运行环境</li>
+<li><strong>基础工具</strong>: hexdump&#x2F;xxd, base64, hashlib 等</li>
+</ul>
+<h3 id="三、解题过程"><a href="#三、解题过程" class="headerlink" title="三、解题过程"></a>三、解题过程</h3><h4 id="3-1-分析题目"><a href="#3-1-分析题目" class="headerlink" title="3.1 分析题目"></a>3.1 分析题目</h4><p>首先运行 exe 文件，查看程序行为：</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163016525.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304163016525">
+
+<p>从输出可以看出：</p>
+<ol>
+<li>这是一个 Python 打包的 exe 程序</li>
+<li>需要输入正确的密码（flag）</li>
+<li>提示”Decompile me if you can!”说明需要反编译</li>
+</ol>
+<h4 id="3-2-提取-PyInstaller-打包内容"><a href="#3-2-提取-PyInstaller-打包内容" class="headerlink" title="3.2 提取 PyInstaller 打包内容"></a>3.2 提取 PyInstaller 打包内容</h4><p>使用 pyinstxtractor 工具提取 exe 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python pyinstxtractor.py <span class="hljs-string">&quot;【2026 春节】解题领红包之四 &#123;Windows 初级题&#125; 出题老师：云在天.exe&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163210849.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304163210849">
+
+<p>提取后得到 <code>crackme_easy.pyc</code> 文件，这是主程序的 Python字节码文件。</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163232730.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304163232730">
+
+<h4 id="3-3-分析-pyc-文件"><a href="#3-3-分析-pyc-文件" class="headerlink" title="3.3 分析 pyc 文件"></a>3.3 分析 pyc 文件</h4><p>由于 pyc 文件是用 Python 3.14 编译的，而当前系统只有 Python 3.13，直接反编译会失败。因此我们采用手动分析的方式。</p>
+<p>通过分析 pyc 文件的二进制内容，找到以下关键字符串：</p>
+<p><strong>函数名：</strong></p>
+<ul>
+<li><code>xor_decrypt</code> - XOR 解密函数</li>
+<li><code>get_encrypted_flag</code> - 获取加密 flag</li>
+<li><code>generate_flag</code> - 生成 flag</li>
+<li><code>calculate_checksum</code> - 计算校验和</li>
+<li><code>hash_string</code> - 哈希字符串</li>
+<li><code>verify_flag</code> - 验证 flag</li>
+<li><code>fake_check_1</code> - 假检查函数 1</li>
+<li><code>fake_check_2</code> - 假检查函数 2</li>
+<li><code>main</code> - 主函数</li>
+</ul>
+<p><strong>关键数据：</strong></p>
+<ul>
+<li>加密数据（Base64）：<code>e3w+fiRvfW18fnx4ZAZ6Pj43YwB9OWMXfXo8Dg4O</code></li>
+</ul>
+<h4 id="3-4-分析加密数据"><a href="#3-4-分析加密数据" class="headerlink" title="3.4 分析加密数据"></a>3.4 分析加密数据</h4><p>将 Base64 编码的加密数据解码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64<br><br>encrypted_b64 = <span class="hljs-string">&quot;e3w+fiRvfW18fnx4ZAZ6Pj43YwB9OWMXfXo8Dg4O&quot;</span><br>encrypted = base64.b64decode(encrypted_b64)<br><span class="hljs-comment"># 解码后的十六进制：7b7c3e7e246f7d6d7c7e7c7864067a3e3e3763007d3963177d7a3c0e0e0e</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-5-破解-XOR-密钥"><a href="#3-5-破解-XOR-密钥" class="headerlink" title="3.5 破解 XOR 密钥"></a>3.5 破解 XOR 密钥</h4><p>由于不知道 XOR 密钥，采用暴力破解的方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64<br><br>encrypted_b64 = <span class="hljs-string">&quot;e3w+fiRvfW18fnx4ZAZ6Pj43YwB9OWMXfXo8Dg4O&quot;</span><br>encrypted = base64.b64decode(encrypted_b64)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">xor_decrypt</span>(<span class="hljs-params">data, key</span>):<br>    result = <span class="hljs-built_in">bytearray</span>()<br>    <span class="hljs-keyword">for</span> i, byte <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(data):<br>        result.append(byte ^ key[i % <span class="hljs-built_in">len</span>(key)])<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)<br><br><span class="hljs-comment"># 尝试单字节密钥 (0x00 - 0xff)</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):<br>    key = <span class="hljs-built_in">bytes</span>([i])<br>    result = xor_decrypt(encrypted, key)<br>    <span class="hljs-keyword">try</span>:<br>        decoded = result.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>, errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br>        <span class="hljs-keyword">if</span> decoded.isprintable() <span class="hljs-keyword">and</span> <span class="hljs-built_in">len</span>(decoded.strip()) &gt; <span class="hljs-number">5</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;密钥：0x<span class="hljs-subst">&#123;i:02x&#125;</span>&quot;</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;结果：<span class="hljs-subst">&#123;decoded&#125;</span>&quot;</span>)<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+
+<p>当尝试到密钥 <code>0x4e</code> (ASCII 字符’N’) 时，得到有意义的结果：</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gcode">密钥：<span class="hljs-number">0</span>x<span class="hljs-number">4</span>e<br>结果：<span class="hljs-number">52</span>p<span class="hljs-number">0</span>j!<span class="hljs-number">3</span><span class="hljs-attr">#2026</span>*H<span class="hljs-number">4</span>ppy-<span class="hljs-symbol">N3</span>w-Y<span class="hljs-number">34</span>r@@@<br></code></pre></td></tr></table></figure>
+
+<p>这个结果看起来像是一个 leet speak编码的信息：</p>
+<ul>
+<li><code>52p0j!3#</code> → <code>52pojie</code>（吾爱破解的拼音）</li>
+<li><code>2026</code> → 年份</li>
+<li><code>H4ppy-N3w-Y34r</code> → <code>Happy New Year</code></li>
+</ul>
+<h3 id="四、最终答案"><a href="#四、最终答案" class="headerlink" title="四、最终答案"></a>四、最终答案</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">52p0j</span>!<span class="hljs-number">3</span>#<span class="hljs-number">2026</span>*H4ppy-N3w-Y34r@@@<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Day5-Windows-中级题"><a href="#Day5-Windows-中级题" class="headerlink" title="Day5 - Windows 中级题"></a>Day5 - Windows 中级题</h2><h3 id="一、题目信息-1"><a href="#一、题目信息-1" class="headerlink" title="一、题目信息"></a>一、题目信息</h3><ul>
+<li><p><strong>标题</strong>: CrackMe Challenge - Binary Edition</p>
+</li>
+<li><p><strong>关键词</strong>: 52pojie, 2026, Happy New Year</p>
+</li>
+<li><p><strong>提示</strong>: 1337 5p34k &amp; 5ymb0l5! Try to decompile this in IDA!</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163851159.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304163851159"></li>
+</ul>
+<h3 id="二、初始分析"><a href="#二、初始分析" class="headerlink" title="二、初始分析"></a>二、初始分析</h3><p>程序运行时输出提示信息，要求输入密码。通过观察文件结构或运行时的字符串，可以发现该程序是使用 <strong>Nuitka</strong> 打包的 Python 程序。核心逻辑通常位于主 DLL 文件中，在本例中为 <code>crackme_hard.dll</code>。</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163922332.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304163922332">
+
+<p>导出后查看文件夹中的内容</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304163952108.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304163952108">
+
+<h3 id="三、逆向分析过程"><a href="#三、逆向分析过程" class="headerlink" title="三、逆向分析过程"></a>三、逆向分析过程</h3><h4 id="3-1-静态分析与资源定位"><a href="#3-1-静态分析与资源定位" class="headerlink" title="3.1 静态分析与资源定位"></a>3.1 静态分析与资源定位</h4><p>使用 IDA Pro 打开 <code>crackme_hard.dll</code>。由于 Nuitka 会将 Python字节码或源码编译为 C 代码，并进行混淆，直接查看反汇编代码较为困难。</p>
+<p>通过搜索字符串或导入表，发现程序使用了 Windows 资源 API（<code>FindResourceA</code>, <code>LoadResource</code> 等）。这通常意味着 Python 的 payload 数据被加密存储在 PE 资源节中。</p>
+<p>通过资源查看工具，我们在 DLL 中定位到了资源类型为 10，ID 为 3 的资源。将其提取出来，命名为 <code>payload.bin</code>。</p>
+<h4 id="3-2-Payload-结构分析"><a href="#3-2-Payload-结构分析" class="headerlink" title="3.2 Payload 结构分析"></a>3.2 Payload 结构分析</h4><p><code>payload.bin</code> 包含了 Nuitka 运行所需的模块数据。通过分析文件结构，我们识别出了 <code>__main__</code> 模块的数据记录。将其单独提取为 <code>main_record.bin</code>。</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304164313208.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304164313208">
+
+<p>所用脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pefile<br><span class="hljs-keyword">import</span> struct<br><br>dll_path = <span class="hljs-string">r&quot;D:\Desktop\吾爱破解\day5\cEVm8pds\crackme.exe_extracted\crackme_hard.dll&quot;</span><br>pe = pefile.PE(dll_path)<br><br><span class="hljs-comment"># Extract Resource</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Extracting resource...&quot;</span>)<br>found = <span class="hljs-literal">False</span><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(pe, <span class="hljs-string">&#x27;DIRECTORY_ENTRY_RESOURCE&#x27;</span>):<br>    <span class="hljs-keyword">for</span> entry <span class="hljs-keyword">in</span> pe.DIRECTORY_ENTRY_RESOURCE.entries:<br>        <span class="hljs-keyword">if</span> entry.<span class="hljs-built_in">id</span> == <span class="hljs-number">10</span>: <span class="hljs-comment"># RT_RCDATA</span><br>            <span class="hljs-keyword">for</span> sub_entry <span class="hljs-keyword">in</span> entry.directory.entries:<br>                <span class="hljs-keyword">if</span> sub_entry.<span class="hljs-built_in">id</span> == <span class="hljs-number">3</span>:<br>                    data_rva = sub_entry.directory.entries[<span class="hljs-number">0</span>].data.struct.OffsetToData<br>                    size = sub_entry.directory.entries[<span class="hljs-number">0</span>].data.struct.Size<br>                    data = pe.get_data(data_rva, size)<br>                    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;payload.bin&quot;</span>, <span class="hljs-string">&quot;wb&quot;</span>) <span class="hljs-keyword">as</span> f:<br>                        f.write(data)<br>                    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Extracted payload.bin (Size: <span class="hljs-subst">&#123;size&#125;</span>)&quot;</span>)<br>                    found = <span class="hljs-literal">True</span><br>                    <span class="hljs-keyword">break</span><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> found:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Resource 10/3 not found!&quot;</span>)<br><br><span class="hljs-comment"># Extract Tables</span><br><span class="hljs-comment"># ImageBase 0x3133e0000</span><br><span class="hljs-comment"># .rdata VA 0x58000, RawPtr 0x55e00</span><br><span class="hljs-comment"># Table1 (3E100): RVA 0x5E100 -&gt; Offset 0x5BF00. Size: 256 * 4 = 1024 bytes.</span><br><span class="hljs-comment"># Table2 (3D100): RVA 0x5D100 -&gt; Offset 0x5AF00. Size: 1024 * 4 = 4096 bytes.</span><br><br><span class="hljs-keyword">try</span>:<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(dll_path, <span class="hljs-string">&quot;rb&quot;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-comment"># Table 1</span><br>        f.seek(<span class="hljs-number">0x5BF00</span>)<br>        table1 = f.read(<span class="hljs-number">1024</span>)<br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;table1.bin&quot;</span>, <span class="hljs-string">&quot;wb&quot;</span>) <span class="hljs-keyword">as</span> t1:<br>            t1.write(table1)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Extracted table1.bin&quot;</span>)<br>        <br>        <span class="hljs-comment"># Table 2</span><br>        f.seek(<span class="hljs-number">0x5AF00</span>)<br>        table2 = f.read(<span class="hljs-number">4096</span>)<br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;table2.bin&quot;</span>, <span class="hljs-string">&quot;wb&quot;</span>) <span class="hljs-keyword">as</span> t2:<br>            t2.write(table2)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Extracted table2.bin&quot;</span>)<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Error extracting tables: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<p>在 <code>main_record.bin</code> 中，我们通过字符串搜索发现了与题目相关的关键变量名：</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304164530175.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304164530175">
+
+<ul>
+<li><code>a_parts</code>: 看起来像是一个包含口令分片的列表</li>
+<li><code>lQa_key</code>: 变量名中的 <code>Qa</code> 暗示了某种关联，且 <code>Q</code> 可能是密钥</li>
+<li><code>a_total_len</code>: 值为 30，提示了最终口令的长度</li>
+</ul>
+<h4 id="3-3-数据结构与解密"><a href="#3-3-数据结构与解密" class="headerlink" title="3.3 数据结构与解密"></a>3.3 数据结构与解密</h4><p>查看 <code>a_parts</code> 附近的数据，发现它是一个混合列表，包含字符串和整数。数据的大致结构如下（十六进制）：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs clean"><span class="hljs-number">4</span>c <span class="hljs-number">0</span>a                &lt;- 列表长度 <span class="hljs-number">10</span><br><span class="hljs-number">63</span> <span class="hljs-number">64</span> <span class="hljs-number">63</span> <span class="hljs-number">21</span> ...      &lt;- 字符串 <span class="hljs-string">&quot;cdc!a;`b&quot;</span> (前缀 <span class="hljs-number">0x63</span> <span class="hljs-string">&#x27;c&#x27;</span> 为类型标记)<br><span class="hljs-number">11</span>                   &lt;- 整数 <span class="hljs-number">0x11</span> (<span class="hljs-number">17</span>)<br><span class="hljs-number">63</span> <span class="hljs-number">63</span> <span class="hljs-number">61</span> <span class="hljs-number">63</span> <span class="hljs-number">67</span> ...   &lt;- 字符串 <span class="hljs-string">&quot;ccacg&quot;</span> (前缀 <span class="hljs-number">0x63</span> <span class="hljs-string">&#x27;c&#x27;</span> 为类型标记)<br><span class="hljs-number">2</span>f                   &lt;- 整数 <span class="hljs-number">0x2f</span> (<span class="hljs-number">47</span>)<br>...<br></code></pre></td></tr></table></figure>
+
+<p>通过对已知明文（如 “Happy”, “New”, “Year”）的猜测和异或爆破，我们确认加密算法为 <strong>XOR</strong>，密钥为 <strong>0x51</strong>（即字符 <code>&#39;Q&#39;</code>）。这与变量名 <code>lQa_key</code> 相吻合。</p>
+<p>解密规则：</p>
+<ol>
+<li><strong>字符串</strong>：首字节 <code>0x63</code> (‘c’) 是 Nuitka 的字符串类型标记，需跳过。后续字节与 <code>0x51</code> 进行异或。</li>
+<li><strong>整数</strong>：字节值直接与 <code>0x51</code> 进行异或。</li>
+</ol>
+<h4 id="3-4-口令还原"><a href="#3-4-口令还原" class="headerlink" title="3.4 口令还原"></a>3.4 口令还原</h4><p>利用解密脚本，我们还原了口令的各个部分：</p>
+<table>
+<thead>
+<tr>
+<th>分片</th>
+<th>类型</th>
+<th>密文 (Hex)</th>
+<th>去掉 Tag</th>
+<th>XOR 0x51 结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>String</td>
+<td><code>63 64 63 21 61 3b 60 62</code></td>
+<td><code>64 63 21 61 3b 60 62</code></td>
+<td><code>52p0j13</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Int</td>
+<td><code>11</code></td>
+<td>-</td>
+<td><code>@</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>String</td>
+<td><code>63 63 61 63 67</code></td>
+<td><code>63 61 63 67</code></td>
+<td><code>2026</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Int</td>
+<td><code>2f</code></td>
+<td>-</td>
+<td><code>~</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>String</td>
+<td><code>63 19 65 21 21 28</code></td>
+<td><code>19 65 21 21 28</code></td>
+<td><code>H4ppy</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Int</td>
+<td><code>0e</code></td>
+<td>-</td>
+<td><code>_</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>String</td>
+<td><code>63 1f 62 26</code></td>
+<td><code>1f 62 26</code></td>
+<td><code>N3w</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Int</td>
+<td><code>0e</code></td>
+<td>-</td>
+<td><code>_</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td>String</td>
+<td><code>63 08 62 65 23</code></td>
+<td><code>08 62 65 23</code></td>
+<td><code>Y34r</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>String</td>
+<td><code>63 70 70 70</code></td>
+<td><code>70 70 70</code></td>
+<td><code>!!!</code></td>
+</tr>
+</tbody></table>
+<p>将所有部分拼接，得到完整口令。</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304164705282.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304164705282">
+
+<h3 id="四、最终答案-1"><a href="#四、最终答案-1" class="headerlink" title="四、最终答案"></a>四、最终答案</h3><figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs erlang-repl"><span class="hljs-number">52</span>p0j13@<span class="hljs-number">2026</span>~H4ppy_N3w_Y34r!!!<br></code></pre></td></tr></table></figure>
+
+<p>验证：口令长度为 30 字符，符合 <code>a_total_len</code> 的限制。输入程序后显示 “SUCCESS!”。</p>
+<hr>
+<h2 id="Day6-番外篇-初级题"><a href="#Day6-番外篇-初级题" class="headerlink" title="Day6 - 番外篇 初级题"></a>Day6 - 番外篇 初级题</h2><h3 id="一、题目分析"><a href="#一、题目分析" class="headerlink" title="一、题目分析"></a>一、题目分析</h3><p>拿到 <code>CatchTheCat.exe</code> 后，首先观察程序图标和运行界面，或者通过 IDA Pro 查看字符串，可以判断这是一个使用 <strong>Love2D</strong> 游戏引擎开发的游戏。</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304164829529.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304164829529">
+
+<p>Love2D 的发布通常是将 <code>love.exe</code> 和游戏资源包（<code>.love</code> 文件，本质是 Zip 格式）合并成一个可执行文件。因此，我们可以尝试从 exe 文件中提取出 Lua 脚本和资源。</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304164903819.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304164903819">
+
+<p>所用脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">import</span> zipfile<br><span class="hljs-keyword">import</span> os<br><br>filename = <span class="hljs-string">&quot;CatchTheCat.exe&quot;</span><br>extract_dir = <span class="hljs-string">&quot;extracted&quot;</span><br><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(extract_dir):<br>    os.makedirs(extract_dir)<br><br><span class="hljs-keyword">try</span>:<br>    <span class="hljs-keyword">with</span> zipfile.ZipFile(filename, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> z:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Extracting <span class="hljs-subst">&#123;filename&#125;</span> to <span class="hljs-subst">&#123;extract_dir&#125;</span>...&quot;</span>, flush=<span class="hljs-literal">True</span>)<br>        z.extractall(extract_dir)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Extraction complete!&quot;</span>, flush=<span class="hljs-literal">True</span>)<br>        <br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Files found:&quot;</span>, flush=<span class="hljs-literal">True</span>)<br>        <span class="hljs-keyword">for</span> root, dirs, files <span class="hljs-keyword">in</span> os.walk(extract_dir):<br>            <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> files:<br>                <span class="hljs-built_in">print</span>(os.path.join(root, file), flush=<span class="hljs-literal">True</span>)<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Error extracting zip: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>, flush=<span class="hljs-literal">True</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="二、提取资源"><a href="#二、提取资源" class="headerlink" title="二、提取资源"></a>二、提取资源</h3><p>编写脚本或使用工具检查文件末尾，发现了 Zip 文件的结束签名（End of Central Directory signature <code>PK\x05\x06</code>）。</p>
+<p>直接将 <code>CatchTheCat.exe</code> 当作 Zip 文件解压，或者提取其尾部的 Zip 数据，得到了以下核心文件：</p>
+<ul>
+<li><code>main.lua</code>: 游戏主逻辑</li>
+<li><code>conf.lua</code>: 配置文件</li>
+<li><code>assets/flag.dat</code>: 加密的 Flag 文件</li>
+</ul>
+<h3 id="三、逻辑分析"><a href="#三、逻辑分析" class="headerlink" title="三、逻辑分析"></a>三、逻辑分析</h3><p>打开 <code>main.lua</code>，搜索 “flag” 或 “win” 相关的逻辑，找到了 <code>getWinMessage</code> 函数：</p>
+<img src="/2026/03/04/2026%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E6%98%A5%E8%8A%82%E8%A7%A3%E9%A2%98%E9%A2%86%E7%BA%A2%E5%8C%85/image-20260304165031605.png" srcset="/img/loading.gif" lazyload class="" title="image-20260304165031605">
+
+<p>分析代码可知：</p>
+<ol>
+<li>需要读取 <code>assets/flag.dat</code> 文件</li>
+<li>游戏难度必须是 <code>hard</code></li>
+<li>解密算法是简单的异或（XOR）运算</li>
+<li>解密密钥（Key）是字符串 <code>&quot;52pojie&quot;</code></li>
+</ol>
+<h3 id="四、解密-Flag"><a href="#四、解密-Flag" class="headerlink" title="四、解密 Flag"></a>四、解密 Flag</h3><p>根据上述逻辑，编写 Python 脚本进行解密：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>key = <span class="hljs-string">b&quot;52pojie&quot;</span><br>file_path = <span class="hljs-string">&quot;extracted/assets/flag.dat&quot;</span><br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&quot;rb&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    content = f.read()<br><br>result = <span class="hljs-built_in">bytearray</span>()<br>key_len = <span class="hljs-built_in">len</span>(key)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(content)):<br>    b = content[i]<br>    k = key[i % key_len]<br>    result.append(b ^ k)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Decrypted Flag:&quot;</span>, result.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+<h3 id="五、最终-Flag"><a href="#五、最终-Flag" class="headerlink" title="五、最终 Flag"></a>五、最终 Flag</h3><p>运行解密脚本，得到 Flag：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">flag</span>&#123;<span class="hljs-number">52</span>pojie_2026_Happy_New_Year!_&gt;w&lt;&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Day11-MCP-中级题"><a href="#Day11-MCP-中级题" class="headerlink" title="Day11 - MCP 中级题"></a>Day11 - MCP 中级题</h2><h3 id="一、题目概述"><a href="#一、题目概述" class="headerlink" title="一、题目概述"></a>一、题目概述</h3><p>这是一道基于 MCP（Model Context Protocol）的安全挑战题目，需要通过调用 remote52pojie MCP 服务完成多阶段认证流程，最终获取隐藏在密卷中的口令。</p>
+<h3 id="二、解题流程"><a href="#二、解题流程" class="headerlink" title="二、解题流程"></a>二、解题流程</h3><h4 id="2-1-启动会话"><a href="#2-1-启动会话" class="headerlink" title="2.1 启动会话"></a>2.1 启动会话</h4><p>首先启动一个 MCP 会话，建立与系统的连接：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;user_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ctf_player&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;auditor&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>返回结果：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;session_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sess_c60d3d71-3afa-4895-b3e4-3314807227b7&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;user_level&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;employee&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-收集公开线索"><a href="#2-2-收集公开线索" class="headerlink" title="2.2 收集公开线索"></a>2.2 收集公开线索</h4><p>通过列出并读取公开文档，获取关键信息：</p>
+<table>
+<thead>
+<tr>
+<th>文档</th>
+<th>关键信息</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>云台岁终告谕</td>
+<td>偈语首字：<strong>玄霄</strong></td>
+</tr>
+<tr>
+<td>门规行仪录</td>
+<td>偈语末字：<strong>密令</strong></td>
+</tr>
+<tr>
+<td>议会卷宗路引</td>
+<td>终卷路径：<code>secret:/board/resolutions</code></td>
+</tr>
+<tr>
+<td>玄堂复核提示</td>
+<td>复核流程说明</td>
+</tr>
+</tbody></table>
+<p><strong>合成口令：</strong> <code>玄霄密令</code></p>
+<h4 id="2-3-触发拒绝获取审计编号"><a href="#2-3-触发拒绝获取审计编号" class="headerlink" title="2.3 触发拒绝获取审计编号"></a>2.3 触发拒绝获取审计编号</h4><p>尝试访问受限文档 <code>confidential:/audit/logs</code>，触发访问拒绝：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;error&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;access_denied&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;audit_log_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;audit_1772434108392_421&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-4-计算-seal-校验值"><a href="#2-4-计算-seal-校验值" class="headerlink" title="2.4 计算 seal 校验值"></a>2.4 计算 seal 校验值</h4><p>根据复核提示，seal 的计算公式为：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">seal</span> = sha256(audit_log_id + passphrase) 的前 <span class="hljs-number">8</span> 位小写十六进制<br></code></pre></td></tr></table></figure>
+
+<p><strong>计算过程：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> -n <span class="hljs-string">&quot;audit_1772434108392_421 玄霄密令&quot;</span> | <span class="hljs-built_in">sha256sum</span> | <span class="hljs-built_in">cut</span> -c1-8<br><span class="hljs-comment"># 输出：a8a4fb08</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-5-提交复核"><a href="#2-5-提交复核" class="headerlink" title="2.5 提交复核"></a>2.5 提交复核</h4><p>使用 review_document 接口提交复核信息：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;ctf_request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;玄霄密令&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;audit_log_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;audit_1772434108392_421&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;seal&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;a8a4fb08&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>复核结果：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;challenge_issued&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;tool_access_token&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;tool_access:get_audit_log:1772434129837:da1a373439848285&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;compliance_note&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;chain_config 仅提交 get_audit_log&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-6-配置并执行工具链"><a href="#2-6-配置并执行工具链" class="headerlink" title="2.6 配置并执行工具链"></a>2.6 配置并执行工具链</h4><p>按照戒律要求，工具链只能包含 <code>get_audit_log</code>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;tool_chain&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;get_audit_log&quot;</span><span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>使用获得的 access_token 获取审计日志：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;_audit_token&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;audit_access:audit_1772434108392_421:1772434108392:d17843d57a864576&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-7-访问终卷获取-flag"><a href="#2-7-访问终卷获取-flag" class="headerlink" title="2.7 访问终卷获取 flag"></a>2.7 访问终卷获取 flag</h4><p>使用 audit_token 访问终卷 <code>secret:/board/resolutions</code>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;secret:/board/resolutions&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;至高议会密议&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;content&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;flag&#123;new_year_2026_keep_warm&#125;&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="三、最终答案"><a href="#三、最终答案" class="headerlink" title="三、最终答案"></a>三、最终答案</h3><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe">flag&#123;<span class="hljs-keyword">new</span><span class="hljs-type">_year_2026_keep_warm</span>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="四、关键知识点"><a href="#四、关键知识点" class="headerlink" title="四、关键知识点"></a>四、关键知识点</h3><h4 id="4-1-复核字段说明"><a href="#4-1-复核字段说明" class="headerlink" title="4.1 复核字段说明"></a>4.1 复核字段说明</h4><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ctf_request</td>
+<td>口令本身（非 access_token）</td>
+</tr>
+<tr>
+<td>audit_log_id</td>
+<td>触发拒绝后返回的完整审计编号</td>
+</tr>
+<tr>
+<td>seal</td>
+<td>SHA256 校验值（audit_log_id + passphrase）前 8 位</td>
+</tr>
+</tbody></table>
+<h4 id="4-2-重要注意事项"><a href="#4-2-重要注意事项" class="headerlink" title="4.2 重要注意事项"></a>4.2 重要注意事项</h4><ul>
+<li>audit_log_id 必须使用完整的拒绝编号，不可截断</li>
+<li>只认可同一会话中最近一次拒绝的编号</li>
+<li>复核凭据有时效性和一次性特性</li>
+<li>工具链配置需保持单一职责原则</li>
+</ul>
+<h4 id="4-3-流程图"><a href="#4-3-流程图" class="headerlink" title="4.3 流程图"></a>4.3 流程图</h4><figure class="highlight ruleslanguage"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ruleslanguage">启动会话 → 收集线索 → 触发拒绝 → 计算 seal → 提交复核<br>                                              ↓<br>获取审计日志 ← 配置工具链 ← 复核通过 ←─────────┘<br>     ↓<br>访问终卷 → 获取 <span class="hljs-keyword">FLAG</span><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/" class="print-no-link">#逆向分析</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2026 吾爱破解春节解题（day1-day6+mcp中级题）</div>
+      <div>https://erkangkang.github.io/2026/03/04/2026吾爱破解春节解题领红包/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>尔康康康康</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/11/07/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E5%A4%8D%E8%B5%9BWP/" title="第九届“强网杯”行业领域专项赛车联网安全赛-复赛（零部件测试）WP">
+                        <span class="hidden-mobile">第九届“强网杯”行业领域专项赛车联网安全赛-复赛（零部件测试）WP</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
